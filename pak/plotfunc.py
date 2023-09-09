@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 from matplotlib.pyplot import cm
 
+plt.rcParams['font.sans-serif']=['Microsoft YaHei']
+
 def plot_SimpleRegret(result_list,n_calls,true_minimum=None, yscale=None, title="Simple regret plot"): 
 
     ax = plt.gca()
