@@ -21,35 +21,105 @@ def fGauss(ftrue, beta):
 
 def Fn1S(x):
     f = bn.F1(1)
+    return fGauss(f(x),0.01)
+# 79.48
+def Fn8S(x):
+    f = bn.F8(3)
+    return fGauss(f(x),0.01)
+# 98.62
+def Fn7S(x):
+    f = bn.F7(1)
+    return fGauss(f(x),0.01)
+# 92.94
+def Fn10S(x):
+    f = bn.F10(2)
+    return fGauss(f(x),0.01)
+# 59.13
+def Fn14S(x):
+    f = bn.F14(3)
+    return fGauss(f(x),0.01)
+# 77.31
+def Fn18S(x):
+    f = bn.F18(7)
+    return fGauss(f(x),0.01)
+# 119.54
+def Fn19S(x):
+    f = bn.F19(2)
+    return fGauss(f(x),0.01)
+# 71.69
+def Fn22S(x):
+    f = bn.F22(5)
+    return fGauss(f(x),0.01)
+# 51.57
+
+def Fn1M(x):
+    f = bn.F1(1)
     return fGauss(f(x),0.1)
 # 79.48
-def Fn2S(x):
+def Fn8M(x):
     f = bn.F8(3)
     return fGauss(f(x),0.1)
 # 98.62
-def Fn3S(x):
+def Fn7M(x):
     f = bn.F7(1)
     return fGauss(f(x),0.1)
 # 92.94
-def Fn4S(x):
+def Fn10M(x):
     f = bn.F10(2)
     return fGauss(f(x),0.1)
 # 59.13
-def Fn5S(x):
+def Fn14M(x):
     f = bn.F14(3)
     return fGauss(f(x),0.1)
 # 77.31
-def Fn6S(x):
+def Fn16M(x):
+    f = bn.F16(1)
+    return fGauss(f(x),0.1)
+# 71.35
+def Fn18M(x):
     f = bn.F18(7)
     return fGauss(f(x),0.1)
 # 119.54
-def Fn7S(x):
+def Fn19M(x):
     f = bn.F19(2)
     return fGauss(f(x),0.1)
 # 71.69
-def Fn8S(x):
+def Fn22M(x):
     f = bn.F22(5)
     return fGauss(f(x),0.1)
+# 51.57
+
+def Fn1L(x):
+    f = bn.F1(1)
+    return fGauss(f(x),1)
+# 79.48
+def Fn8L(x):
+    f = bn.F8(3)
+    return fGauss(f(x),1)
+# 98.62
+def Fn7L(x):
+    f = bn.F7(1)
+    return fGauss(f(x),1)
+# 92.94
+def Fn10L(x):
+    f = bn.F10(2)
+    return fGauss(f(x),1)
+# 59.13
+def Fn14L(x):
+    f = bn.F14(3)
+    return fGauss(f(x),1)
+# 77.31
+def Fn18L(x):
+    f = bn.F18(7)
+    return fGauss(f(x),1)
+# 119.54
+def Fn19L(x):
+    f = bn.F19(2)
+    return fGauss(f(x),1)
+# 71.69
+def Fn22L(x):
+    f = bn.F22(5)
+    return fGauss(f(x),1)
 # 51.57
 
 def F1(x):
