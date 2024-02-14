@@ -1,0 +1,336 @@
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.3)  4 FEB 2024 16:07
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**Operations-Research-template-with-ECompanion
+(./Operations-Research-template-with-ECompanion.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-02-22> (./informs3.cls
+Document Class: informs3 2012/08/09 v0.95 LaTeX document class for articles submitted to INFORMS
+(d:/texlive/2023/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2022/04/08 v2.17n AMS math features
+\@mathmargin=\skip48
+
+For additional information on amsmath, use the `?' option.
+(d:/texlive/2023/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (d:/texlive/2023/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks16
+\ex@=\dimen140
+)) (d:/texlive/2023/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen141
+) (d:/texlive/2023/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count181
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count182
+\leftroot@=\count183
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count184
+\DOTSCASE@=\count185
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen142
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count186
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count187
+\dotsspace@=\muskip16
+\c@parentequation=\count188
+\dspbrk@lvl=\count189
+\tag@help=\toks17
+\row@=\count190
+\column@=\count191
+\maxfields@=\count192
+\andhelp@=\toks18
+\eqnshift@=\dimen143
+\alignsep@=\dimen144
+\tagshift@=\dimen145
+\tagwidth@=\dimen146
+\totwidth@=\dimen147
+\lineht@=\dimen148
+\@envbody=\toks19
+\multlinegap=\skip49
+\multlinetaggap=\skip50
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+) (d:/texlive/2023/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (d:/texlive/2023/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (d:/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+) (d:/texlive/2023/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (d:/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (d:/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks21
+) (d:/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+ (d:/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (d:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 107.
+ (d:/texlive/2023/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
+))
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
+) (d:/texlive/2023/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
+ (d:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: xetex.def on input line 149.
+ (d:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (d:/texlive/2023/texmf-dist/tex/latex/tools/array.sty
+Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen151
+\ar@mcellbox=\box53
+\extrarowheight=\dimen152
+\NC@list=\toks22
+\extratabsurround=\skip51
+\backup@length=\skip52
+\ar@cellbox=\box54
+) (d:/texlive/2023/texmf-dist/tex/latex/tools/theorem.sty
+Package: theorem 2014/10/28 v2.2c Theorem extension package (FMi)
+\theorem@style=\toks23
+\theorem@bodyfont=\toks24
+\theorempreskipamount=\skip53
+\theorempostskipamount=\skip54
+ (d:/texlive/2023/texmf-dist/tex/latex/tools/thp.sty
+File: thp.sty 2014/10/28 v2.2c Theorem extension package (FMi)
+))
+\symboperators=\mathgroup6
+\symbletters=\mathgroup7
+\symbsymbols=\mathgroup8
+\markwidth=\dimen153
+\blth=\dimen154
+\marklength=\dimen155
+\markdistance=\dimen156
+\trimwidth=\dimen157
+\trimheight=\dimen158
+\auxaaa=\dimen159
+\auxbbb=\dimen160
+\auxccc=\dimen161
+\auxddd=\dimen162
+\c@nowappendix=\count193
+\@bls=\dimen163
+\@em=\dimen164
+\tempbox=\box55
+\tempdim=\dimen165
+\tempdimht=\dimen166
+\adim=\dimen167
+\c@figure=\count194
+\c@table=\count195
+\adim=\dimen168
+\ABSwidth=\dimen169
+\clineHT=\dimen170
+\clineDP=\dimen171
+\labelwidthi=\dimen172
+\labelwidthii=\dimen173
+\labelwidthiii=\dimen174
+\labelwidthiv=\dimen175
+\@maxlistdepth=\count196
+\c@part=\count197
+\c@chapter=\count198
+\c@section=\count199
+\c@subsection=\count266
+\c@subsubsection=\count267
+\c@paragraph=\count268
+\c@subparagraph=\count269
+\@tempboxa=\box56
+\@tempboxb=\box57
+) (./endnotes.sty
+\c@endnote=\count270
+\endnotesep=\dimen176
+\@enotes=\write3
+) (d:/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip55
+\bibsep=\skip56
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count271
+)
+\c@theorem=\count272
+\c@lemma=\count273
+\c@proposition=\count274
+\c@corollary=\count275
+\c@claim=\count276
+\c@conjecture=\count277
+\c@hypothesis=\count278
+\c@assumption=\count279
+\c@remark=\count280
+\c@example=\count281
+\c@problem=\count282
+\c@definition=\count283
+\c@question=\count284
+\c@answer=\count285
+\c@exercise=\count286
+\c@repeattheorem=\count287
+\c@repeatlemma=\count288
+\c@repeatproposition=\count289
+\c@repeatcorollary=\count290
+\c@repeatclaim=\count291
+\c@repeatconjecture=\count292
+\c@repeathypothesis=\count293
+\c@repeatassumption=\count294
+\c@repeatremark=\count295
+\c@repeatexample=\count296
+\c@repeatproblem=\count297
+\c@repeatdefinition=\count298
+\c@repeatquestion=\count299
+\c@repeatanswer=\count300
+\c@repeatexercise=\count301
+ (d:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2023-01-16 L3 backend support: XeTeX
+\g__graphics_track_int=\count302
+\l__pdf_internal_box=\box58
+\g__pdf_backend_object_int=\count303
+\g__pdf_backend_annotation_int=\count304
+\g__pdf_backend_link_int=\count305
+)
+No file Operations-Research-template-with-ECompanion.aux.
+\openout1 = `Operations-Research-template-with-ECompanion.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 55.
+(d:/texlive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+
+
+LaTeX Warning: Reference `frontier' on page 1 undefined on input line 148.
+
+File: Sample-Figure.pdf Graphic file (type pdf)
+<use Sample-Figure.pdf>
+[1
+
+]
+
+Package natbib Warning: Citation `namm' on page 2 undefined on input line 174.
+
+
+Package natbib Warning: Citation `abi' on page 2 undefined on input line 180.
+
+
+Package natbib Warning: Citation `btc' on page 2 undefined on input line 192.
+
+
+Package natbib Warning: Citation `namm2' on page 2 undefined on input line 217.
+
+[2] [3] [4]
+
+Package natbib Warning: Citation `tjp' on page 5 undefined on input line 356.
+
+[5]
+
+Package natbib Warning: Citation `w' on page 6 undefined on input line 392.
+
+
+Package natbib Warning: Citation `namm' on page 6 undefined on input line 409.
+
+[6] [7]
+
+LaTeX Warning: Reference `marg-butt-th' on page ec1 undefined on input line 493.
+
+
+LaTeX Warning: Reference `aux-lem1' on page ec1 undefined on input line 522.
+
+
+LaTeX Warning: Reference `aux-lem2' on page ec1 undefined on input line 522.
+
+
+LaTeX Warning: Reference `aux-lem1' on page ec1 undefined on input line 535.
+
+
+LaTeX Warning: Reference `aux-lem2' on page ec1 undefined on input line 535.
+
+File: Sample-Figure.pdf Graphic file (type pdf)
+<use Sample-Figure.pdf>
+
+Package natbib Warning: Citation `trbn' on page ec1 undefined on input line 560.
+
+
+Package natbib Warning: Citation `h' on page ec1 undefined on input line 560.
+
+
+Package natbib Warning: Citation `fo' on page ec1 undefined on input line 564.
+
+
+Package natbib Warning: Citation `fs' on page ec1 undefined on input line 568.
+
+
+Package natbib Warning: Citation `g' on page ec1 undefined on input line 571.
+
+[1
+
+] [2]
+
+Package natbib Warning: There were undefined citations.
+
+[3] (./Operations-Research-template-with-ECompanion.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4014 strings out of 478630
+ 55355 string characters out of 5847731
+ 1855012 words of memory out of 5000000
+ 24077 multiletter control sequences out of 15000+600000
+ 525493 words of font info for 108 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 70i,15n,76p,237b,449s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on Operations-Research-template-with-ECompanion.pdf (10 pages).

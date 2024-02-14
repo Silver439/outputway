@@ -1,0 +1,190 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[UTF8]{ctex}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage{mathrsfs}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{float}
+
+\title{Selection of output mode for Bayesian optimization in noisy problems}
+\author{Chenxi Li}
+
+\begin{document}
+
+\maketitle
+本文研究的是贝叶斯优化在有噪声问题中如何选择结果输出的方式。在无噪声的问题中，通常会直接使用
+所有观测值中的最优值对应点作为优化的输出结果。但在有噪声的问题中，由于所有观测值都存在噪声，这种结果的
+输出方式就可能不太妥当。考虑到代理模型能够提供搜索空间内任一点的预测均值，这使得我们可以选择使用
+预测性的输出方式。例如输出所有观测点中预测均值最优的点，或是输出整个搜索空间内预测均值最小的点。
+预测性的输出方式在高噪声的问题中可能会比直接输出观测值更加合适，但输出方式的选择并不仅仅只与噪声的
+大小有关。目标函数的响应面性质，搜索空间的维度等因素同样也会造成影响。本文使用BBOB函数组对带噪声的
+贝叶斯优化问题做了一些数值实验，并希望能够为输出方式的选择提供一些有指导性的建议。
+
+\section{Introduction}
+贝叶斯优化是黑盒优化领域中较为先进的优化框架，其特点在于能够以较少的目标函数评估次数来尽可能地获得接近全局
+最优值的解，因而被广泛使用在药物研发，神经网络参数调节等目标函数评估代价昂贵的优化问题上。该算法是一种基于
+模型的序贯优化\cite{7352306}，在每一步迭代时，贝叶斯优化都会根据当前已掌握的信息来制定平衡探索和开发的策略
+用以选择下一个评估点。具体来说，贝叶斯优化主要由代理模型和采集函数两部分组成。其中代理模型一般使用高斯过程
+模型，根据已有的观测点及其观测值信息来对目标函数进行建模。而后采集函数可以利用建立的模型去选择下一个观测
+点的位置，从而实现在较少的观测次数下得到尽量好的优化结果。
+
+贝叶斯优化已经被验证在低维，无噪声的昂贵黑箱优化问题中有良好的优化效果。当目标函数存在噪声时，贝叶斯优化
+同样能够发挥作用，但其算法的设置上可能需要进行一定的改动。一个最直观的问题在于，当目标函数存在噪声时，观测
+点对应的观测值将不再是真实值。这个问题将会从两个方面影响贝叶斯优化的优化效果：一方面在于采集函数。目前常用
+的采集函数是基于最优值期望提升的EI，即通过计算某一点相对当前最优值的提升期望大小来选择期望最大的点作为下一个
+观测点。当噪声较大时，当前最优值可能会受到严重干扰，从而影响EI的选点策略。另一方面，噪声同样会影响到我们最终
+的输出结果，因为噪声情况下的观测值最小并不一定准确。解决这些问题的一个直观方案是用代理模型的预测均值最优值来
+代替观测最优值。这里预测均值同样也不是真实值，只是代理模型基于已有信息对于目标函数的推断。但在噪声较大的情况
+下，这样的预测值往往会比直接的观测值更加可信。本文主要想要探究的就是在什么样的情况下我们更应该相信观测值，什么
+样的条件下更应该相信预测值。当下似乎并没有文章对此作出详细的讨论，因此本文希望能够通过实验深入探究这一问题。
+为了使得实验结论更具代表性，本文的测试问题选择使用“BBOB”这一成熟的测试基准环境，它包含了24个无噪声的测试
+函数。我们将其修改为带噪声的形式作为测试的基准问题。
+
+本文的大致分为以下几个部分：第一部分是对于贝叶斯优化的详细介绍，包括代理模型和采集函数。第二部分是有关BBOB基准
+测试函数的介绍以及相关的实验设定。第三部分我们先探讨了在无噪声的环境下使用观测值和使用预测值作为结果输出的优化
+效果差异。第四部分为带噪声的实验。最后是全文的结论总结。
+
+\section{贝叶斯优化}
+贝叶斯优化框架主要由两部分组成：代理模型和采集函数，用来解决复杂黑盒函数的全局优化问题。具体来说，记$f(x)$为未
+知的目标黑盒函数，考虑优化问题：
+\begin{equation}\label{eq1}
+x^* = \mathop{\arg\max}\limits_{x \in \mathcal{X}} f(x)
+\end{equation}
+其中$\mathcal{X}$为搜索空间。目标函数$f(x)$无需拥有显示表达式，只需满足对于任意的$x_0 \in X$,均可以计算出
+对应的目标函数值$f(x_0)$。主流的贝叶斯优化框架均采用高斯过程(见2.1节)作为代理模型，用于构建目标函数的后验分布，
+具有较强的灵活性。利用高斯过程建模之后，对于搜索空间的任何一点，高斯过程模型均能返回该点对应的预测均值以及其不确
+定性。利用其返回的预测均值和不确定性，我们就能设计采集函数（见2.2节）来权衡开发与探索，以此来选择下一个观测点的
+位置。贝叶斯优化的具体算法流程见\textbf{Algorithm1}。
+
+值得注意的是，\textbf{Algorithm1}给出的是无噪声条件下标准的贝叶斯优化算法流程。对于有噪声的问题，我们不一定会
+将观测值最小对应点作为输出结果。我们可能会考虑以下两种预测性的结果输出方式：输出以观测点中预测均值最小的点或代理
+模型在整个搜索空间上预测均值最小的点。我们会在之后的实验部分分析对比上述三种输出方式的优化表现。
+
+\begin{algorithm}[H]
+    \SetAlgoLined
+    \KwIn{number of initial point $n_0$,\ number of max iteration $n$}
+  
+    Randomly get initial data $D_{1:n_0}$ and update GP model\;
+    \For{$t=1,2,...n$}{
+     Find $x_t$ by optimizing the acquisition function over the GP $x_t={\arg\max}_x u(x|D_{1:n_0+n})$\;
+     Sample the objective function: $y_t=f(x_t)+\epsilon_t$\;
+     Augment the data $D_{1:n_0+n}$ = ${D_{1:n_0+n-1},(x_t,y_t)}$ and update GP model\;
+     }
+    \KwResult{$(x_{t^*},y_{t^*}) \in D_{1:n_0+n}$,\ $t^*=\mathop{\arg\max}y_{1:n_0+n}$}
+    \caption{Bayesian optimization}
+  \end{algorithm}
+  \hspace*{\fill}
+  \subsection{高斯过程}
+高斯过程是一种非参数模型，由均值函数$m(x):\mathcal{X} \rightarrow \mathbb{R}$以及正定核函数
+（也可视为协方差函数）$k:\mathcal{X} \times \mathcal{X} \rightarrow \mathbb{R}$组成。对于搜索空间内任何有
+限点集$x_{1:n}$，定义$f_i:=f(x_i)$为$x_i$处对应的目标函数值，$y_i:=f(x_i)+\epsilon_i$为$x_i$处对应的带噪声
+的观测值。在高斯过程模型中，我们假设$\textbf{f}:=f_{1:n}$服从联合高斯分布，且在给定$\textbf{f}$的情况下
+$\textbf{y}:=y_{1:n}$服从正态分布，具体数学表达形式如下：
+
+\begin{equation}\label{eq1}
+    \textbf{f}\mid\mathcal{X} \sim \mathcal{N}(\textbf{m},\textbf{K})
+    \end{equation}
+    \begin{equation}\label{eq1}
+    \textbf{y}\mid \textbf{f},\sigma^2 \sim \mathcal{N}(\textbf{f},\sigma^2\textbf{I}])
+    \end{equation}
+该模型的特点在于我们将目标函数$f(x)$视为随机变量，equation(2)代表了变量$f(x)$的先验分布。其中$\textbf{m}$代
+表先验的均值函数,$K_{i,j}:=k(x_i,x_j)$为协方差矩阵。得到观测数据$\mathcal{D}_n={(x_i,y_i)^n_{i=1}}$后，
+$f(x)$在给定观测数据$\mathcal{D}_n$的条件下，对于新的待预测值$f(x^*)$,由高斯过程的性质，我们有如下联合分布：
+
+\hspace*{\fill}
+
+\qquad \qquad \qquad \quad  $\begin{bmatrix} \textbf{y} \\ f(x^*) \end{bmatrix}$ $\sim$ 
+$\mathcal{N}$ $\Biggl($ $\textbf{m}$,$\begin{bmatrix} \textbf{K}+\sigma^2\textbf{I} & \textbf{k} (x^*)\\ 
+\textbf{k} (x^*)^T & k(x^*,x^*) \end{bmatrix}$ $\Biggl)$\\
+ 由正态分布的条件概率分布公式容易推出$f(x^*)$的均值与方差函数如下：
+\begin{equation}\label{eq1}
+\textbf{m}_n(x^*)=\textbf{m}(x^*)+\textbf{k}(x^*)^T(\textbf{K}+\sigma^2\textbf{I})^{-1}(\textbf{y}-\textbf{m}(\textbf{x}))
+\end{equation}
+\begin{equation}\label{eq1}
+\sigma^2_n(x^*)=k(\textbf{x},\textbf{x})-\textbf{k}(\textbf{x})^T(\textbf{K}+\sigma^2\textbf{I})^{-1} \textbf{k}(\textbf{x})
+\end{equation}
+公式中的$\textbf{k}(x^*)$是$x^*$与$\textbf{x}_{1:n}$之间的协方差向量。
+值得一提的是，若我们对目标函数并没有十分具体的先验信息，则先验均值函数$\textbf{m}$一般直接取$\textbf{0}$。
+有了高斯过程模型后，我们对于搜索空间上的每一个点均能获得其预测均值和预测方差，这给采集函数的设计提供了重要基础。
+
+  \subsection{采集函数}
+本文中的实验将采集函数聚焦于Expected improvement(EI)及其变体。EI是贝叶斯优化中最常用的采集函数之一，其主要思想
+在于选择相比当前最优值提升期望最大的点作为下一个观测点。具体来说，我们先定义改进函数I(improvement function):
+\begin{equation}\label{eq1}
+\textit{I}(\textbf{x},v,\theta):=(v-f^*_n)\mathbb{I}(v>f^*_n)
+\end{equation}
+其中$v\sim \mathcal{N}(m_n(\textbf{x}),\sigma^2(\textbf{x}))$, $\mathbb{I}$为示性函数，$\theta$为超参数集。
+$f^*_n$为当前最优值，$m_n(\textbf{x}),\sigma_n(\textbf{x})$分别为高斯过程模型对输入值$\textbf{x}$所返回的预测均值和预测方差。
+$\Phi$为标准正态分布的累积分布函数(CDF)。对$v$求期望即得到采集函数EI：
+\begin{equation}\label{eq1}
+u(\textbf{x};D_{1:n}):=\mathbb{E}[\textit{I}(\textbf{x},v,\theta)]=(m_n(\textbf{x})-f^*_n)\Phi \Big(\frac{m_n(\textbf{x})-f^*_n}{\sigma(\textbf{x})}\Big)+\sigma_n(\textbf{x})\phi \Big(\frac{m_n(\textbf{x})-f^*_n}{\sigma_n(\textbf{x})} \Big)
+\end{equation}
+其中$\Phi$和$\phi$分别为标准正态分布的累积分布(CDF)和概率密度分布(PDF)。
+当目标函数存在噪声时，当前最优值$f^*_n$并非真实值。在噪声较大时，$f^*_n$的取值可能会较为极端，导致EI错误地认为搜索空间内的
+绝大部分点提升期望极小，从而使得EI过度倾向于探索而非开发。一个最直观的解决方式是用已观测点中代理模型的最小预测均值$m^*_n$来
+代替$f^*_n$。这实际上是将EI从优化带噪声的最优观测值改进为优化代理模型的最优预测值，从而提升算法对噪声的鲁棒性。我们将改进后的
+EI称之为EIm，其表达式如下：
+\begin{equation}\label{eq1}
+  u'(\textbf{x};D_{1:n}):=(m_n(\textbf{x})-m^*_n)\Phi \Big(\frac{m_n(\textbf{x})-m^*_n}{\sigma(\textbf{x})}\Big)+\sigma_n(\textbf{x})\phi \Big(\frac{m_n(\textbf{x})-m^*_n}{\sigma_n(\textbf{x})} \Big)
+  \end{equation}
+  $\mu^+$为当前最优值，$\mu_n(\textbf{x}),\sigma_n(\textbf{x})$分别为高斯过程模型对输入值
+  $\textbf{x}$所返回的预测均值和预测方差。$\Phi$为标准正态分布的累积分布函数(CDF)。
+
+\section{测试函数及实验设置}
+  \subsection{BBOB基准环境}
+  本文的测试函数选自BBOB无噪声测试函数组的24个测试函数，在其基础上添加噪声作为我们的测试基准问题。我们将这些函数编号为F1-F24，根据
+  BBOB原文中的设置，这些函数被划分为5种类型：可分离函数(F1-F5),条件敏感度低或适中的函数(F6-F9),高条件敏感度单峰函数(F10-F14),有
+  充分全局结构的多峰函数(F15-F19),全局结构较弱的的多峰函数(F20-F24)。BBOB测试函数组中的所有函数都可以通过平移或旋转等变化来获得新
+  的测试函数。在本文的后续实验中，我们预先将这24个无噪声的函数固定下来，这些函数的最优值，标准差以及简单的描述见图()。对于它们的更为
+  详细的信息可以参考[]。
+  \begin{table}[H]
+    \centering
+    \resizebox{1\columnwidth}{!}{
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+        2D函数 & 最优值 & 标准差 & 特点 \\ \hline
+        F1 & 79.48 & 12.57 & sphere function,unimodal,presumably the most easy continuous domain ssearch problem \\ \hline
+        F2 & 66.95 & 10044455.67 & Globally quadratic and ill-conditioned(about $10^6$) function with smooth local irregularities.Conditioning is about $10^6$ \\ \hline
+        F3 & 77.66 & 418.57 & Highly multimodal function with a comparatively regular structure for the placement of the optima. \\ \hline
+        F4 & 77.66 & 171.86 & Highly multimodal function with a structured but highly asymmetric placement of the optima. \\ \hline
+        F5 & 66.71 & 29.02 & Purely linear function,solution is on the domain boundary \\ \hline
+        F6 & 65.87 & 237396.11 & Unimodal,highly asymmetric function, \\ \hline
+        F7 & 92.94 & 431.55 & unimodal, non-separable, conditioning is about 100.The function consists of many plateaus of different sizes. \\ \hline
+        F8 & 98.62 & 46480.79 & (Rosenbrock function) in larger dimensions the function has a local optimum with an attraction volume of about 25\% \\ \hline
+        F9 & 65.61 & 21715.05 & rotated version of the previously defined f8. \\ \hline
+        F10 & 59.13 & 9634378.45 & rotated version of the previously defined f2. \\ \hline
+        F11 & 76.27 & 21241083.28 & A single direction in search space is a 1000 times more sensitive than all others.Conditioning is about $10^6$ \\ \hline
+        F12 & 56.61 & 9607260659 & conditioning is about $10^6$, rotated, unimodal \\ \hline
+        F13 & 68.42 & 449.99 & Resembles f12 with a non-differentiable bottom of valley \\ \hline
+        F14 & 77.31 & 41.04 & The sensitivies of the $z_i$-variables become more and more different when approaching the optimum \\ \hline
+        F15 & 70.03 & 521.74 & Prototypical highly multimodal function which has originally a very regular and symmetric structure for the placement of the optima. \\ \hline
+        F16 & 71.35 & 79.07 & Highly rugged and moderately repetitive landscape, where the global optimum is not unique. \\ \hline
+        F17 & 69.83 & 19.00  & A highly multimodal function where frequency and amplitude of the modulation vary.Conditioning is low \\ \hline
+        F18 & 119.54 & 308.17 & Moderately ill-conditioned counterpart to f17 \\ \hline
+        F19 & 71.69 & 74.72 & Resembling the Rosenbrock function in a highly multimodal way. \\ \hline
+        F20 & 71.29 & 45818.02 & The most prominent 2D minima are located comparatively close to the corners of the unpenalized search area. \\ \hline
+        F21 & 124.08 & 12.21 & The function consists of 101 optima with position and height being unrelated and randomly chosen. \\ \hline
+        F22 & 51.57 & 24.05 & The function consists of 21 optima with position and height being unrelated and randomly chosen.Conditioning is about 1000 \\ \hline
+        F23 & 85.39 & 20.12 & Highly rugged and highly repetitive function with more than 10D global optima. \\ \hline
+        F24 & 93.30  & 18.18 &  Highly multimodal function with two funnels. \\ \hline
+    \end{tabular}
+    }
+\end{table}
+  \subsection{实验设置}
+\begin{itemize}
+  \item[$\bullet$] \textbf{维度与预算：}实验中的函数维度分为2维与4维。对于二维问题，无噪声条件下单次实验总预算为100个观测点，有噪声
+  时增加为300个。对于四维问题，无噪声条件下总预算为200，带噪声条件下增加为400。
+  \item[$\bullet$] \textbf{初始化：}
+\end{itemize}
+
+
+
+\medskip
+
+\bibliographystyle{unsrt}%Used BibTeX style is unsrt
+\bibliography{sample}
+
+\end{document}
+
+  
