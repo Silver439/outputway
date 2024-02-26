@@ -79,11 +79,15 @@ def Fn10S(x):
 
 def Fn13S(x):
     f = bn.F13(18)
-    return fGauss(f(x),10,0.05)
+    return fGauss(f(x),13,0.05)
 
 def Fn14S(x):
     f = bn.F14(3)
     return fGauss(f(x),14,0.05)
+
+def Fn15S(x):
+    f = bn.F15(2)
+    return fGauss(f(x),15,0.05)
 
 def Fn18S(x):
     f = bn.F18(7)
@@ -116,7 +120,7 @@ def Fn10M(x):
 
 def Fn13M(x):
     f = bn.F13(18)
-    return fGauss(f(x),10,0.2)
+    return fGauss(f(x),13,0.2)
 
 def Fn14M(x):
     f = bn.F14(3)

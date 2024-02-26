@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.3)  14 FEB 2024 11:00
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.3)  20 FEB 2024 20:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -525,18 +525,23 @@ Overfull \hbox (8.00539pt too wide) detected at line 122
 []\OML/cmm/m/it/10 u\OT1/cmr/m/n/10 ([]; \OML/cmm/m/it/10 D[]\OT1/cmr/m/n/10 ) := \U/msb/m/n/10 E\OT1/cmr/m/n/10 [[]([]\OML/cmm/m/it/10 ; v; ^^R\OT1/cmr/m/n/10 )] = (\OML/cmm/m/it/10 m[]\OT1/cmr/m/n/10 ([]) \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 f[]\OT1/cmr/m/n/10 )^^H[][][] + \OML/cmm/m/it/10 ^^[[]\OT1/cmr/m/n/10 ([])\OML/cmm/m/it/10 ^^^[][][]
  []
 
-[4] (./main.bbl) [5] (./main.aux)
+[4]
+Overfull \hbox (1.14906pt too wide) in paragraph at lines 182--185
+[]\TU/SimSun(0)/b/n/10 评 估 指 标：|  \TU/SimSun(0)/m/n/10 我 们 定 义 损 失 率 \TU/lmr/m/n/10 =(\TU/SimSun(0)/m/n/10 优 化 算 法 所 得 结 果 的 真 实 值\TU/lmr/m/n/10 -\TU/SimSun(0)/m/n/10 真 实 最 优 值\TU/lmr/m/n/10 )/\TU/SimSun(0)/m/n/10 真
+ []
+
+[5] (./main.bbl [6]) [7] (./main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11302 strings out of 478630
- 274257 string characters out of 5847731
- 1878012 words of memory out of 5000000
- 31237 multiletter control sequences out of 15000+600000
+ 11316 strings out of 478630
+ 275026 string characters out of 5847731
+ 1881012 words of memory out of 5000000
+ 31251 multiletter control sequences out of 15000+600000
  521502 words of font info for 96 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  89i,12n,97p,997b,503s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (5 pages).
+Output written on main.pdf (7 pages).

@@ -5,4 +5,9 @@ Bobak Shahriari, Kevin Swersky, Ziyu Wang, Ryan~P. Adams, and Nando de~Freitas.
 \newblock Taking the human out of the loop: A review of bayesian optimization.
 \newblock {\em Proceedings of the IEEE}, 104(1):148--175, 2016.
 
+\bibitem{Hansen2010RealParameterBO}
+Nikolaus Hansen, Anne Auger, Steffen Finck, and Raymond Ros.
+\newblock Real-parameter black-box optimization benchmarking bbob-2010 : Experimental setup.
+\newblock 2010.
+
 \end{thebibliography}
