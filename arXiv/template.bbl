@@ -1,0 +1,86 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Shahriari et~al.(2016)Shahriari, Swersky, Wang, Adams, and de~Freitas]{Shahriari2016taking}
+Bobak Shahriari, Kevin Swersky, Ziyu Wang, Ryan~P. Adams, and Nando de~Freitas.
+\newblock Taking the human out of the loop: A review of bayesian optimization.
+\newblock \emph{Proceedings of the IEEE}, 104\penalty0 (1):\penalty0 148--175, 2016.
+\newblock \doi{10.1109/JPROC.2015.2494218}.
+
+\bibitem[Rasmussen and Williams(2005)]{Rasmussen2005Gaussian}
+Carl~Edward Rasmussen and Christopher K.~I. Williams.
+\newblock \emph{{Gaussian Processes for Machine Learning}}.
+\newblock The MIT Press, 11 2005.
+\newblock ISBN 9780262256834.
+\newblock \doi{10.7551/mitpress/3206.001.0001}.
+\newblock URL \url{https://doi.org/10.7551/mitpress/3206.001.0001}.
+
+\bibitem[Jones et~al.(1998)Jones, Schonlau, and Welch]{Jones1998Efficient}
+Donald~R. Jones, Matthias Schonlau, and William~J. Welch.
+\newblock Efficient global optimization of expensive black-box functions.
+\newblock \emph{J. of Global Optimization}, 13\penalty0 (4):\penalty0 455–492, dec 1998.
+\newblock ISSN 0925-5001.
+\newblock \doi{10.1023/A:1008306431147}.
+\newblock URL \url{https://doi.org/10.1023/A:1008306431147}.
+
+\bibitem[Hansen et~al.(2010)Hansen, Auger, Finck, and Ros]{Hansen2010RealParameterBO}
+Nikolaus Hansen, Anne Auger, Steffen Finck, and Raymond Ros.
+\newblock Real-parameter black-box optimization benchmarking bbob-2010 : Experimental setup.
+\newblock 2010.
+\newblock URL \url{https://api.semanticscholar.org/CorpusID:260830254}.
+
+\bibitem[{Srinivas} et~al.(2009){Srinivas}, {Krause}, {Kakade}, and {Seeger}]{Srinivas2009Gaussian}
+Niranjan {Srinivas}, Andreas {Krause}, Sham~M. {Kakade}, and Matthias {Seeger}.
+\newblock {Gaussian Process Optimization in the Bandit Setting: No Regret and Experimental Design}.
+\newblock \emph{arXiv e-prints}, art. arXiv:0912.3995, December 2009.
+\newblock \doi{10.48550/arXiv.0912.3995}.
+
+\bibitem[Thompson(1933)]{Thompson1933On}
+William~R. Thompson.
+\newblock On the likelihood that one unknown probability exceeds another in view of the evidence of two samples.
+\newblock \emph{Biometrika}, 25\penalty0 (3/4):\penalty0 285--294, 1933.
+\newblock ISSN 00063444.
+\newblock URL \url{http://www.jstor.org/stable/2332286}.
+
+\bibitem[Hennig and Schuler(2012)]{Hennig2012Entropy}
+Philipp Hennig and Christian~J. Schuler.
+\newblock Entropy search for information-efficient global optimization.
+\newblock \emph{J. Mach. Learn. Res.}, 13\penalty0 (null):\penalty0 1809–1837, jun 2012.
+\newblock ISSN 1532-4435.
+
+\bibitem[Huang et~al.(2006)Huang, Allen, Notz, and Zheng]{Huang2006Global}
+D.~Huang, Theodore Allen, William Notz, and Ning Zheng.
+\newblock Global optimization of stochastic blackbox systems via sequential kriging meta-models.
+\newblock \emph{Journal of Global Optimization}, 34:\penalty0 441--466, 03 2006.
+\newblock \doi{10.1007/s10898-005-2454-3}.
+
+\bibitem[Forrester et~al.(2006)Forrester, Keane, and Bressloff]{Forrester2006Design}
+Alexander I.~J. Forrester, Andy~J. Keane, and Neil~W. Bressloff.
+\newblock Design and analysis of "noisy" computer experiments.
+\newblock \emph{AIAA Journal}, 44\penalty0 (10):\penalty0 2331--2339, 2006.
+\newblock \doi{10.2514/1.20068}.
+\newblock URL \url{https://doi.org/10.2514/1.20068}.
+
+\bibitem[Picheny et~al.(2012)Picheny, Ginsbourger, Richet, and Caplin]{Picheny2012Quantile}
+Victor Picheny, David Ginsbourger, Yann Richet, and Grégory Caplin.
+\newblock Quantile-based optimization of noisy computer experiments with tunable precision.
+\newblock \emph{Technometrics}, 55, 03 2012.
+\newblock \doi{10.1080/00401706.2012.707580}.
+
+\bibitem[Picheny et~al.(2013)Picheny, Wagner, and Ginsbourger]{Picheny2013benchmark}
+Victor Picheny, Tobias Wagner, and David Ginsbourger.
+\newblock A benchmark of kriging-based infill criteria for noisy optimization.
+\newblock \emph{Structural and Multidisciplinary Optimization}, 48, 09 2013.
+\newblock \doi{10.1007/s00158-013-0919-4}.
+
+\bibitem[{Bossek} et~al.(2020){Bossek}, {Doerr}, and {Kerschke}]{Bossek2020Initial}
+Jakob {Bossek}, Carola {Doerr}, and Pascal {Kerschke}.
+\newblock {Initial Design Strategies and their Effects on Sequential Model-Based Optimization}.
+\newblock \emph{arXiv e-prints}, art. arXiv:2003.13826, March 2020.
+\newblock \doi{10.48550/arXiv.2003.13826}.
+
+\end{thebibliography}

@@ -65,6 +65,10 @@ def Fn1S(x):
     f = bn.F1(1)
     return fGauss(f(x),1,0.05)
 
+def Fn2S(x):
+    f = bn.F2(10)
+    return fGauss(f(x),2,0.05)
+
 def Fn7S(x):
     f = bn.F7(1)
     return fGauss(f(x),7,0.05)
@@ -101,10 +105,18 @@ def Fn22S(x):
     f = bn.F22(5)
     return fGauss(f(x),22,0.05)
 
+def Fn23S(x):
+    f = bn.F23(6)
+    return fGauss(f(x),23,0.05)
+
 
 def Fn1M(x):
     f = bn.F1(1)
     return fGauss(f(x),1,0.2)
+
+def Fn2M(x):
+    f = bn.F2(10)
+    return fGauss(f(x),2,0.2)
 
 def Fn7M(x):
     f = bn.F7(1)
@@ -141,6 +153,10 @@ def Fn19M(x):
 def Fn22M(x):
     f = bn.F22(5)
     return fGauss(f(x),22,0.2)
+
+def Fn23M(x):
+    f = bn.F23(6)
+    return fGauss(f(x),23,0.2)
 
 
 def Fn1L(x):
