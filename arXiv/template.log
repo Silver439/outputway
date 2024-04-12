@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.3)  31 MAR 2024 19:37
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.3)  11 APR 2024 10:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -594,10 +594,14 @@ File: D:/outputway/arXiv/figures/EIM.jpg Graphic file (type bmp)
  [5] [6]
 File: D:/outputway/pictures/noise2D/Fn1_S2D_ins.png Graphic file (type bmp)
 <D:/outputway/pictures/noise2D/Fn1_S2D_ins.png>
+File: D:/outputway/pictures/noise2D/Fn2_S2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/Fn2_S2D_ins.png>
 File: D:/outputway/pictures/noise2D/Fn7_S2D_ins.png Graphic file (type bmp)
 <D:/outputway/pictures/noise2D/Fn7_S2D_ins.png>
 File: D:/outputway/pictures/noise2D/Fn8_S2D_ins.png Graphic file (type bmp)
 <D:/outputway/pictures/noise2D/Fn8_S2D_ins.png>
+File: D:/outputway/pictures/noise2D/Fn10_S2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/Fn10_S2D_ins.png>
 File: D:/outputway/pictures/noise2D/Fn13_S2D_ins.png Graphic file (type bmp)
 <D:/outputway/pictures/noise2D/Fn13_S2D_ins.png>
 File: D:/outputway/pictures/noise2D/Fn18_S2D_ins.png Graphic file (type bmp)
@@ -606,25 +610,88 @@ File: D:/outputway/pictures/noise2D/Fn19_S2D_ins.png Graphic file (type bmp)
 <D:/outputway/pictures/noise2D/Fn19_S2D_ins.png>
 File: D:/outputway/pictures/noise2D/Fn22_S2D_ins.png Graphic file (type bmp)
 <D:/outputway/pictures/noise2D/Fn22_S2D_ins.png>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7]
+File: D:/outputway/pictures/noise2D/Fn1_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/Fn1_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/Fn7_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/Fn7_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/Fn8_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/Fn8_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/Fn13_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/Fn13_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/Fn18_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/Fn18_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/Fn19_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/Fn19_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/Fn22_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/Fn22_M2D_ins.png>
  (./template.bbl
 Underfull \hbox (badness 1057) in paragraph at lines 9--13
 \T1/ptm/m/n/10 out of the loop: A re-view of bayesian op-ti-miza-tion.  \T1/ptm/m/it/10 Pro-ceed-ings of the IEEE\T1/ptm/m/n/10 , 104(1):148--175, 2016.
  []
 
+[8]
 Missing character: There is no – ("2013) in font ptmr8t!
-[7]
 Missing character: There is no – ("2013) in font ptmr8t!
-) [8] (./template.aux)
+)
+File: D:/outputway/pictures/noise2D_old/Fn1_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old/Fn1_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old/Fn2_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old/Fn2_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old/Fn7_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old/Fn7_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old/Fn8_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old/Fn8_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old/Fn10_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old/Fn10_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old/Fn14_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old/Fn14_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old/Fn18_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old/Fn18_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old/Fn19_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old/Fn19_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old/Fn22_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old/Fn22_M2D_ins.png>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9]
+File: D:/outputway/pictures/noise4D_old/Fn1_M4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D_old/Fn1_M4D_ins.png>
+File: D:/outputway/pictures/noise4D_old/Fn7_M4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D_old/Fn7_M4D_ins.png>
+File: D:/outputway/pictures/noise4D_old/Fn8_M4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D_old/Fn8_M4D_ins.png>
+File: D:/outputway/pictures/noise4D_old/Fn10_M4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D_old/Fn10_M4D_ins.png>
+File: D:/outputway/pictures/noise4D_old/Fn14_M4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D_old/Fn14_M4D_ins.png>
+File: D:/outputway/pictures/noise4D_old/Fn18_M4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D_old/Fn18_M4D_ins.png>
+File: D:/outputway/pictures/noise4D_old/Fn19_M4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D_old/Fn19_M4D_ins.png>
+File: D:/outputway/pictures/noise4D_old/Fn22_M4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D_old/Fn22_M4D_ins.png>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [10] [11] (./template.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `template.out' has not changed.
-(rerunfilecheck)             Checksum: F828AE4C3C28403CD4D28CA561C50EA5;1872.
+(rerunfilecheck)             Checksum: 367C00E4F3FFA057EC4F1018A271C381;2510.
  ) 
 Here is how much of TeX's memory you used:
- 16177 strings out of 478630
- 264894 string characters out of 5847731
+ 16388 strings out of 478630
+ 275083 string characters out of 5847731
  1871012 words of memory out of 5000000
- 36065 multiletter control sequences out of 15000+600000
+ 36252 multiletter control sequences out of 15000+600000
  559538 words of font info for 74 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  72i,13n,77p,2401b,552s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on template.pdf (8 pages).
+Output written on template.pdf (11 pages).

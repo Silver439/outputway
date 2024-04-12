@@ -56,6 +56,10 @@ def Fn1M(x):
     f = bn.F1(1)
     return fGauss(f(x),0.1)
 # 79.48
+def Fn2M(x):
+    f = bn.F2(10)
+    return fGauss(f(x),0.1)
+# 66.95
 def Fn8M(x):
     f = bn.F8(3)
     return fGauss(f(x),0.1)
