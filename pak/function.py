@@ -163,6 +163,10 @@ def Fn1L(x):
     f = bn.F1(1)
     return fGauss(f(x),1,0.5)
 
+def Fn2L(x):
+    f = bn.F2(10)
+    return fGauss(f(x),2,0.5)
+
 def Fn7L(x):
     f = bn.F7(1)
     return fGauss(f(x),7,0.5)
@@ -174,6 +178,10 @@ def Fn8L(x):
 def Fn10L(x):
     f = bn.F10(2)
     return fGauss(f(x),10,0.5)
+
+def Fn13L(x):
+    f = bn.F13(18)
+    return fGauss(f(x),13,0.5)
 
 def Fn14L(x):
     f = bn.F14(3)

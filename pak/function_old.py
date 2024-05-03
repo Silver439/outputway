@@ -72,6 +72,10 @@ def Fn10M(x):
     f = bn.F10(2)
     return fGauss(f(x),0.1)
 # 59.13
+def Fn13M(x):
+    f = bn.F13(18)
+    return fGauss(f(x),0.1)
+# 68.42
 def Fn14M(x):
     f = bn.F14(3)
     return fGauss(f(x),0.1)
