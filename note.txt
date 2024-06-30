@@ -1,5 +1,6 @@
 Data\olddata2D: 异质噪声，使用EIM
 Data\noise2D: 同质噪声，使用EIM
+Data\noise4D: 同质噪声，使用EIM
 Data\data2D: 无噪声2D
 Data\data4D: 无噪声4D
 oldcode\DataOld\noise2D: 异质噪声，只用EI
@@ -8,6 +9,6 @@ oldcode\DataOld\noise4D: 异质噪声，只用EI
 pictures\noise2D: 同质噪声，使用EIM
 pictures\noise2D_old: 异质噪声，只用EI
 pictures\noise4D_old: 异质噪声，只用EI
-pictures\noise2D_oldnew: 异质噪声，使用EIM
+pictures\noise2D_old_EIM: 异质噪声，使用EIM
 pictures\picture2D: 无噪声2D
 pictures\picture4D: 无噪声4D

@@ -20,6 +20,7 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{subcaption}
+\usepackage{enumitem}
 \usepackage{doi}
 
 
@@ -76,8 +77,8 @@ pdfkeywords={First keyword, Second keyword, More},
 \maketitle
 
 \begin{abstract}
-	\hspace{2em}This paper investigates how to select optimal result outputs within noisy problem domains in Bayesian optimization. In noise-free problems, we can directly use the optimal observation point as the output result of the optimization process. However, in noisy environments, where all observations are subject to noise, the direct utilization of this result output may be inappropriate. Recognizing that the surrogate model can furnish the predicted mean at any point within the search space, this 
-	enables the adoption of predictive output methods. For instance, one can choose to output the point with the best predicted mean among all observed points or the point with the best predicted mean across the entire search space. Predictive output methods are likely more suitable than directly outputting observed values in high-noise problems. Nevertheless, the choice of the output method is not solely contingent on the magnitude of the noise; factors such as the response surface properties of the objective function and the dimensionality of the search space also exert an influence. This article conducts numerical experiments using the BBOB function group to explore Bayesian optimization problems with noise, aiming to offer insightful recommendations for the selection of output methods.
+	\hspace{2em}This paper explores the method of Bayesian optimization for selecting the final output result in noisy optimization problems. For noise-free problems, the best observation can be directly output as the final optimization result. However, in the presence of noise, each observation is affected by the noise and it may not be appropriate to output the best observation directly. Considering that the surrogate models in Bayesian optimization are able to provide predicted mean for any point in the search space, and for noisy objective function, the predictions of the model tend to be more plausible than the actual observations. This inspired us to use a result output method based on the predicted values of thesurrogate models. For example, assuming that we want to find the minimum of the objective function, we can output the point with the lowest predicted mean among all observed points, or the point with the lowest predicted mean in the entire search space. In the case of high noise levels, these methods may be more appropriate than using the observations directly. However, the choice of output method depends not only on the noise level, but may also depend on factors such as the response surface properties and the dimensionality of the search space. In this paper, we will conduct numerical experiments using the BBOB function set to investigate the advantages and disadvantages of each output method for Bayesian optimization in different noise environments, and provide informative suggestions for the choice of output methods.
+
 \end{abstract}
 
 
@@ -89,15 +90,13 @@ pdfkeywords={First keyword, Second keyword, More},
 \section{Introduction}
 
 \hspace{2em}
-Bayesian optimization stands out as an advanced optimization framework within the realm of black-box optimization. Its distinctive feature lies in its ability to derive solutions close to the global optimal value with a reduced 
-number of objective function evaluations. This efficiency makes it a widely adopted approach in diverse domains, including drug research and development, as well as cost-effective optimization challenges such as the adjustment 
-of neural network parameters and other objective function evaluations \citep{Shahriari2016taking}.The algorithm is a model-based sequential optimization. At each iteration, Bayesian optimization will formulate a strategy that balances exploration and development based on the currently available information to select the next evaluation point. Specifically, Bayesian optimization mainly consists of two parts: the surrogate model and the acquisition function. The surrogate model generally uses Gaussian process \citep{Rasmussen2005Gaussian} to model the objective function based on existing observation points and their observation value information. The acquisition function can then use the established model to select the location of the next observation point, thereby achieving the best possible optimization results with a smaller number of observations.
+Bayesian optimization stands out as an advanced optimization framework for  black-box optimization. The advantage of this method is the ability to approximate the global optimum with fewer objective functions to evaluate. This efficiency makes it a widely adopted approach in diverse domains, including drug research and development, as well as cost-effective optimization challenges such as the adjustment of neural network parameters and other objective function evaluations \citep{Shahriari2016taking}.The algorithm is a model-based sequential optimization. At each iteration, Bayesian optimization will formulate a strategy that balances exploration and development based on the currently available information to select the next evaluation point. In particular, Bayesian optimization is primarily made up of two parts: the surrogate model and the acquisition function. The surrogate model generally uses Gaussian process \citep{Rasmussen2005Gaussian} for simulating the objective function based on current observation points. The acquisition function can then use the established model to select the location of the next observation point, thereby optimizing outcomes more efficiently with fewer observations.
 
 \hspace{2em}
-Bayesian optimization has demonstrated its efficacy in achieving favorable optimization outcomes, particularly in problems characterized by low dimensionality, absence of noise, and expensive black-box optimization problems. While Bayesian optimization remains applicable in the noisey objective function, certain adjustments to the algorithm settings may be necessary. One of the most intuitive problems is that when there is noise in the objective function, the observation value corresponding to the observation point will no longer be true. This issue can impact the optimization effectiveness of Bayesian optimization in two key aspects:acquisition function and optput results. Presently the most commonly used acquisition function is the EI \citep{Jones1998Efficient} which based on the optimal value improvement expectation. That is, by calculating the expected improvement of a certain point relative to the current optimal value, the point with the largest expectation improvement is selected as the next observation point. When the noise is large, the current optimal value may be seriously disturbed, thus affecting the point selection strategy of EI, making it tend to over-explore.Smilarly, noise also affects our final output, as the minimum observations in the case of noise are not accurate. An intuitive solution to these problems is to replace the observed optimal value with the predicted mean optimal value of the surrogate model. Here the predicted mean is an inference of the surrogate model about the objective function based on the existing information. In noisy cases, especialy large noise, such predictions tend to be more reliable than direct observations. The main purpose of this article is to explore the conditions under which we should trust the observations, and under what conditions we should trust the predictions. There doesn't seem to be a detailed discussion of this in the current article, so this article hopes to explore this issue in depth through experiments. In order to make the experimental conclusions more representative, the test questions in this paper choose to use the mature test benchmark environment "BBOB", which contains 24 noise-free test functions. We modified it to be in a noisy form as a benchmark question for the test.The detail of BBOB functions can be found in \citep{Hansen2010RealParameterBO}
+Bayesian optimization demonstrates its efficiency in many scenarios, especially in low-dimensional, noise-free and expensive black-box optimization problems. When the objective function is noisy, Bayesian optimization faces a critical problem in that the observations corresponding to the observation points are no longer accurate. This problem may affect the effectiveness of Bayesian optimization in two ways: the acquisition function and the output results. Presently the most commonly used acquisition function is EI \citep{Jones1998Efficient} which based on the optimal value improvement expectation. That is, by calculating the expected improvement of a specific point relative to the current optimal value, the point with the largest expectation improvement is selected as the next observation point. In cases of high noise level, the current optimal value may be seriously disturbed, thus affecting the point selection strategy of EI, making it tend to over-explore. Smilarly, noise level also affects our final output results, as the minimum observation in this case is also not accurate. An intuitive solution to these problems is to replace the observed optimum with the optimum of the predicted mean derived by the agent model. Here the predicted mean is the agent model's extrapolation of the objective function based on the available information. In noisy situations, these predictions are often more reliable than direct observations. The main purpose of the research in this paper is to explore the circumstances under which we should trust predicted values more than observed values. To the best of our knowledge, this does not seem to have been discussed in detail in current articles, so this paper attempts to explore it through numerical experiments. In order to make the experimental conclusions more representative, the test problemss in this paper choose to use the advanced test benchmark environment "BBOB",  inclusive of 24 noise-free test functions. We modified it to be in a noisy form as a benchmark question for the numerical experiments. The detail of BBOB functions can be found in \citep{Hansen2010RealParameterBO}
 
 \hspace{2em}
-This article is divided into the following sections: The first part is a detailed introduction to Bayesian optimization, includeing surrogate model and acquisition function. The second part is an introduction to BBOB benchmark functions and experimental settings. In the third part, we discussed the use of observations and predictions in a noise-free environment value as the difference in optimization effect as the result output. The fourth part is a noisy experiment. 
+The structure of this article is segmented as follows: The first part is a detailed introduction to Bayesian optimization, includeing surrogate model and acquisition function. The second part is an introduction to BBOB benchmark functions and experimental settings. In the third part, we discussed the use of observations and predictions in a noise-free environment value as the difference in optimization effect as the result output. The fourth part is a noisy experiment. 
 
 
 \section{Bayesian optimization}
@@ -108,7 +107,7 @@ This article is divided into the following sections: The first part is a detaile
 where X is the disign space assumed compact. The objective function f(x) has no explicit expression, for any $x_0 \in \mathcal{X}$(observation point), the corresponding objective function value $f(x_0)$ can be calculated(observation value).Bayesian optimization frameworks commonly employ Gaussian processes (see Section 2.1) as surrogate models to construct the posterior distribution of the objective function, providing a high degree of flexibility. With Gaussian process modeling, the model can yield the predicted mean and uncertainty for any point in the search space. Leveraging these predicted values and uncertainties, we can design acquisition functions (see Section 2.2) to balance exploration and exploitation, thereby selecting the next observation point. The specific algorithm of Bayesian optimization is outlined in \textbf{Algorithm1}.
 
 \hspace{2em}
-Note that \textbf{Algorithm1} provides the standard Bayesian optimization algorithm under the assumption of a noise-free condition. In the presence of noise,outputting the point corresponding to the minimum observed value as the result might not be appropriate. Two alternative predictive output methods may be considered: outputting the point with the smallest predicted mean among the observation points or outputting the point with the smallest predicted mean across the entire design space as predicted by the surrogate model. In the subsequent experimental section, we will analyze and compare the optimization performance of these three output methods.
+Note that \textbf{Algorithm1} provides the standard Bayesian optimization algorithm under the assumption of a noise-free condition. In the presence of noise, outputting the point corresponding to the minimum observed value as the result may not be appropriate. Two alternative predictive output methods may be considered: outputting the point with the smallest predicted mean among the observation points or outputting the point with the smallest predicted mean throughout the entire design space as predicted by the surrogate model. The following experimental segment will focus on examining and contrasting the optimization efficacy of these output methods.
 \begin{algorithm}[htb]
     \SetAlgoLined
     \KwIn{number of initial point $n_0$,\ number of max iteration $n$}
@@ -129,14 +128,14 @@ Note that \textbf{Algorithm1} provides the standard Bayesian optimization algori
 
 
 \subsection{Gaussian process}
-\hspace{2em}Gaussian process is a nonparametric model that is fully characterized by its prior mean function $m(x):\mathcal{X} \rightarrow \mathbb{R}$ and positive definite kernel functions(Can also be thought of as a covariance function)$k:\mathcal{X} \times \mathcal{X} \rightarrow \mathbb{R}$. For any finite set of points within the search space $x_{1:n}$, define $f_i:=f(x_i)$ as the corresponding value of the objective function at $x_i$, $y_i:=f(x_i)+\epsilon_i$ is the corresponding noisy observation at $x_i$.In the Gaussian process model, we assume that $\textbf{f}:=f_{1:n}$ obeys a joint Gaussian distribution, and that $\textbf{y}:=y_{1:n}$ obeys a normal distribution given $\textbf{f}$, which is mathematically expressed as follows:
+\hspace{2em}Gaussian process is a nonparametric model that is fully characterized by its prior mean function $m(x):\mathcal{X} \rightarrow \mathbb{R}$ and positive definite kernel functions(Can also be thought of as a covariance function) $k:\mathcal{X} \times \mathcal{X} \rightarrow \mathbb{R}$. For any finite set of points within the search space $x_{1:n}$, define $f_i:=f(x_i)$ as the corresponding value of the objective function at $x_i$, $y_i:=f(x_i)+\epsilon_i$ is the corresponding noisy observation at $x_i$.In the Gaussian process model, we assume that $\textbf{f}:=f_{1:n}$ obeys a joint Gaussian distribution, and that $\textbf{y}:=y_{1:n}$ obeys a normal distribution given $\textbf{f}$, which is expressed as follows:
 \begin{equation}\label{eq2}
     \textbf{f}\mid\mathcal{X} \sim \mathcal{N}(\textbf{m},\textbf{K})
     \end{equation}
     \begin{equation}\label{eq3}
     \textbf{y}\mid \textbf{f},\sigma^2 \sim \mathcal{N}(\textbf{f},\sigma^2\textbf{I}])
     \end{equation}
-The peculiarity of this model is that we treat the objective function $f(x)$ as a random variable, and equation(2) represents the prior distribution of the variable $f(x)$. where $textbf{m}$ represents the prior mean function, and $K_{i,j}:=k(x_i,x_j)$ is the covariance matrix. After obtaining the observation data $mathcal{D}_n={(x_i,y_i)^n_{i=1}}$, $f(x)$ given the observed data $mathcal{D}_n$, for the new value to be predicted $f(x^*)$, we have the following joint distribution:
+Note here we treat the objective function $f(x)$ as a random variable, and equation(2) represents the prior distribution of the variable $f(x)$. where $\textbf{m}$ represents the prior mean function, and $K_{i,j}:=k(x_i,x_j)$ is the covariance matrix. After obtaining the observation data $\mathcal{D}_n={(x_i,y_i)^n_{i=1}}$, $f(x)$ given the observed data $\mathcal{D}_n$, for the new value to be predicted $f(x^*)$, we have the following joint distribution:
 
 \hspace*{\fill}
 
@@ -155,10 +154,10 @@ Using the conditional probability distribution formula of normal distribution, i
 \end{equation}
 
 The $\textbf{k}(x^*)$ in the formula is the vector of covariance between $x^*$ and $\textbf{x}_{1:n}$.
-Using the Gaussian process model, we can obtain the predicted mean and predicted variance for each point in the search space, which provides an important basis for the design of the acquisition function.
+By employing the Gaussian process model, we can obtain the predicted mean and predicted variance for each point in the search space, which provides an important basis for the design of the acquisition function.
 
 \subsection{Expected improvement}
-\hspace{2em}BO has many choices of acquisition fuction, including Expected improvement\citep{Jones1998Efficient}, GP upper confiddences bound\citep{Srinivas2009Gaussian}, Thompson sampling\citep{Thompson1933On}, and Entropy search methods\citep{Hennig2012Entropy}. In this article, we will focus on the most commonly used method EI.The main idea of EI is to select the point with the greatest improvement expectation compared to the current optimal value as the next observation point. Specifically, we first define the improvement function $\textbf{I}$(improvement function):
+\hspace{2em}BO has a variety of acquisition fuction options, including Expected improvement\citep{Jones1998Efficient}, GP upper confiddences bound\citep{Srinivas2009Gaussian}, Thompson sampling\citep{Thompson1933On}, and Entropy search methods\citep{Hennig2012Entropy}. This paper concentrates on the most commonly used method EI. The main idea of EI is to select the point with the greatest improvement expectation compared to the current optimal value as the next observation point. Specifically, we first define the improvement function $\textbf{I}$(improvement function):
 
 \begin{equation}\label{eq6}
 	\textit{I}(\textbf{x},v,\theta):=(v-f^*_n)\mathbb{I}(v>f^*_n)
@@ -174,23 +173,23 @@ Take expectation for $v$ to get the acquisition function EI:
 
 Where $\Phi$ and $\phi$ are the cumulative distribution (CDF) and probability density distribution (PDF) of the standard normal distribution respectively.
 
-\hspace{2em}When there is noise in the objective function, the current optimal value $f^*_n$ is not the real value. When the noise is large, the value of $f^*_n$ may be more extreme, causing EI to mistakenly believe that the
-The vast majority of points have minimal improvement expectations, making EI overly biased towards exploration rather than exploitation. One of the most intuitive solutions is to use the minimum predicted mean $m^*_n$ of the surrogate model in the observed points.
-Replace $f^*_n$. This actually improves EI from optimizing the optimal observation value with noise to optimizing the optimal predicted value of the surrogate model, thereby improving the algorithm's robustness to noise. We record the improved EI as EIm, and its expression is as follows:
+\hspace{2em}When there is noise in the objective function, the current optimal value $f^*_n$ is inaccurate. In situations of high noise level, the value of $f^*_n$ may be more extreme, causing EI to mistakenly believe that the
+most points have minimal improvement expectations, making EI overly biased towards exploration rather than exploitation. One of the most intuitive solutions is to use the minimum predicted mean $m^*_n$ of the surrogate model among the observed points to replace $f^*_n$. This actually improves EI from optimizing the optimal observation value with noise to optimizing the optimal predicted value of the surrogate model, thereby improving the algorithm's robustness to noise. We record the improved EI as EIM, and its expression is as follows:
 
 \begin{equation}\label{eq8}
 	u'(\textbf{x};D_{1:n}):=(m_n(\textbf{x})-m^*_n)\Phi \Big(\frac{m_n(\textbf{x})-m^*_n}{\sigma(\textbf{x})}\Big)+\sigma_n(\textbf{x})\phi \Big(\frac{m_n(\textbf{x})-m^*_n}{\sigma_n(\textbf{x})} \Big)
 \end{equation}
-$\mu^+$ is the current optimal value, $\mu_n(\textbf{x}),\sigma_n(\textbf{x})$ are respectively returned by the Gaussian process model for the input value $\textbf{x}$ The predicted mean and predicted variance.In fact, there are many other variants of EI designed to deal with noisy problems, such as Augmented expected improvement(AEI)\citep{Huang2006Global}, the reinterpolation procedure(RI)\citep{Forrester2006Design}, Expected quantile improvement(EQI)\citep{Picheny2012Quantile} and so on. The behavior of these methods has been detailed discussed in \citep{Picheny2013benchmark}. The experiments in this article will not involve too many variations of EI, since there is no direct relationship between the output method of the final result and the point selection method of the acquisition function.
+$\mu^+$ is the current optimal value, $\mu_n(\textbf{x}),\sigma_n(\textbf{x})$ are the predicted mean and predicted variance for the input value $\textbf{x}$. In fact, there are many other variants of EI designed to deal with noisy problems, such as Augmented expected improvement(AEI)\citep{Huang2006Global}, the reinterpolation procedure(RI)\citep{Forrester2006Design}, Expected quantile improvement(EQI)\citep{Picheny2012Quantile} and so on. The behavior of these methods has been detailed discussed in \citep{Picheny2013benchmark}. The experiments in this article will not involve too many variations of EI, since there is no direct relationship between the output method of the final result and the point selection method of the acquisition function.
 
-\hspace{2em}In subsequent experiments, we will use EI for the output method based on observed values; and use EIm for the output method based on predicted values.
+\hspace{2em}In subsequent experiments, we will use EI for the output method based on observed values; and use EIM for the output method based on predicted values.
 
 \section{Test functions and experimental settings}
 \subsection{BBOB benchmark functions}
 
-\hspace{2em}The test function in this article is selected from the 24 test functions of the BBOB noiseless test function group, and noise is added as our test benchmark problem. We number these functions F1-F24. According to the settings in the original BBOB text, these functions are divided into 5 types: separable functions (F1-F5), Functions with low or moderate conditioning (F6-F9),Functions with high conditioning and unimodal (F10-F14),  Multi-modal functions with adequate global structure (F15-F19), Multi-modal functions with weak global structure (F20-F24). All functions in the BBOB test function group can obtain new test functions through changes such as translation or rotation. In the subsequent experiments of this article, we fixed these 24 noise-free functions in advance. The optimal values, standard deviations and simple descriptions of these functions are shown in Table 1. More detailed information about them can be found in\citep{Hansen2010RealParameterBO}.
+\hspace{2em}The test functions in this article are selected from the 24 test functions of the BBOB noiseless test function group, and noise is added as our test benchmark problems. These functions are designated as F1-F24. In the original BBOB text's configurations, these functions are categorized into 5 types: separable functions (F1-F5), Functions with low or moderate conditioning (F6-F9),Functions with high conditioning and unimodal (F10-F14), Multi-modal functions with adequate global structure (F15-F19), Multi-modal functions with weak global structure (F20-F24). Every function within the BBOB test function group is capable of acquiring novel test functions via alterations like shifting or rotating. In the subsequent experiments of this article, we fixed these 24 noise-free functions in advance. The optimal values, standard deviations and simple descriptions of these functions are shown in Table 1. More detailed information about them can be found in\citep{Hansen2010RealParameterBO}.
 
 \begin{table}[H]
+    \renewcommand{\arraystretch}{1.3}
     \centering
     \resizebox{1\columnwidth}{!}{
     \begin{tabular}{|l|l|l|l|}
@@ -226,22 +225,17 @@ $\mu^+$ is the current optimal value, $\mu_n(\textbf{x}),\sigma_n(\textbf{x})$ a
 \end{table}
 
 \subsection{Experimeental settings}
-
-\begin{itemize}
-\item[$\bullet$] \textbf{Dimension and budget:} The function dimensions in the experiment are divided into 2 dimensions and 4 dimensions. For two-dimensional problems, the total budget for a single experiment is 100 observation points under noise-free conditions, and increases to 300 observation points when there is noise. For four-dimensional problems, the total budget is 200 under no-noise conditions and increases to 400 under noisy conditions.
+\begin{itemize}[itemsep=2pt,topsep=0pt,parsep=0pt]
+\item[$\bullet$] \textbf{Dimension and budget:} In the experiment, the dimensions of the function are segmented into 2 and 4 dimensions. For 2-dimensional problems, the total budget for a single experiment is 100 observation points under noise-free conditions, and escalates to 300 points in noisy conditions. For four-dimensional problems, the total budget is 200 under no-noise conditions and increases to 400 under noisy conditions.
 \item[$\bullet$] \textbf{Initialization:} Following the result of \citep{Bossek2020Initial}, we set the initial number of points for Gaussian process modeling to 10$\%$ of the total budget, and use Latin hypercube sampling to randomly select points in the search area.
 \item[$\bullet$] \textbf{loss rate} Denote $y_a$ as the true value of the result obtained by the optimization algorithm, $y_{opt}$ as the true optimal value. We define the loss rate:
-
 \begin{equation}\label{eq9}
 	loss = \frac{y_a - y_{opt}}{y_{opt}}\times 100\%
 \end{equation}
-
  as the optimization performance evaluation index of the algorithm. Note that the minimum values of the 24 functions we tested are all positive and do not approach 0, so the loss rate is well defined. Similarly, we can also define the relative loss rate between the two algorithms:
-
 \begin{equation}\label{eq10}
 	relloss = \frac{y_1 - y_2}{y_2}\times 100\%
 \end{equation}
-  
  where $y_1$ is the real value of the result obtained by optimization algorithm 1 and $y_2$ is the real value of the result obtained by optimization algorithm 2. If the relative loss rate is negative, it means that the optimal result of Algorithm 1 is better than Algorithm 2.
 
 \item[$\bullet$] \textbf{Randomness processing:} In order to make the results more general, we will use different random seeds to repeat 30 times for each set of experiments and then average the results. The randomness in the Bayesian optimization process is mainly reflected in the initial point position and the internal optimization of the acquisition function.
@@ -250,7 +244,7 @@ $\mu^+$ is the current optimal value, $\mu_n(\textbf{x}),\sigma_n(\textbf{x})$ a
 \textbf{1.}Directly output the minimum observation value(Abbreviated as \textbf{obs}).\\
 \textbf{2.}Output observation point with the minimum predicted mean.(Abbreviated as \textbf{obs\_M}).\\
 \textbf{3.}Output the point with the minimum predicted mean over the total design space.(Abbreviated as \textbf{total}).\\
-The choice of output method will align with the selection of acquisition function. If the output method based on observed values (obs) is employed, then the Expected Improvement (EI) acquisition function will be used. Conversely, if the output method based on predicted values (obs\_M and total) is employed, then we use EIM.
+The choice of output method will align with the selection of acquisition function. If the output method based on observed values (\textbf{obs}) is employed, then the Expected Improvement (EI) acquisition function will be used. Conversely, if the output method based on predicted values (\textbf{obs\_M} and \textbf{total}) is employed, then we use EIM.
 
 \end{itemize}
 
@@ -266,7 +260,7 @@ The choice of output method will align with the selection of acquisition functio
         \includegraphics[width=1\textwidth]{D:/outputway/arXiv/figures/EIM.jpg}
         \caption{Using EIM for output method based on prediction}
     \end{subfigure}
-    \caption{The above two figures show the results of Bayesian optimization for a one-dimensional noise function. The pale red curve is the true function curve, and the blue one is the curve of the predicted mean function of the GP. The green dot is the observation point selected by the acquisition function. The acquisition function used in the left figure is EI, which corresponds to the output method 'obs', which will directly output the point corresponding to the smallest observation. The acquisition function for the right figure is EIM, which shows two outputs based on the predicted values. Method 'total' corresponds to the minimum value of the predicted mean function (blue curve), and 'obs\_M' is the point with the largest predicted mean (blue curve) corresponding to the coordinates of all observed points (green dots).}
+    \caption{The above two figures show the results of Bayesian optimization for a one-dimensional noise function. The pale red curve is the true function curve, and the blue one is the curve of the predicted mean function of the GP. The green dot is the observation point selected by the acquisition function. The acquisition function used in the left figure is EI, which corresponds to the output method '\textbf{obs}', which will directly output the point corresponding to the smallest observation. The acquisition function for the right figure is EIM, which shows two outputs based on the predicted values. Method '\textbf{total}' corresponds to the minimum value of the predicted mean function (blue curve), and '\textbf{obs\_M}' is the point with the largest predicted mean (blue curve) corresponding to the coordinates of all observed points (green dots).}
     \label{Fig1}
 \end{figure}
 
@@ -275,9 +269,9 @@ The choice of output method will align with the selection of acquisition functio
 
 \section{Experimental results and analysis.}
   \subsection{Noise-free experimental results}
-  \hspace{2em}We first focus on experimental results for the noiseless problem. In the case of no noise, since the observed values of the observation points are all real values, the sequences $obs, obs\_M$ are exactly the same. In the same way, $output1 and output2$ are also completely consistent. We only need to compare the sequence $obs,total\_M$ to analyze whether the predictive sequence can contain better points, and whether $output2$ can output the better points as the final result. Of course, it is common sense to judge that $output1$ is the most reasonable output method under noise-free conditions. Our noise-free experiment primarily aims to explore the optimization effectiveness and observational output when using the predictive output method in noiseless conditions. The distinct disparities between the methods are detailed in Table 2:
-
+  \hspace{2em}We first focus on the experimental results for the noiseless problem. In the noise-free problem, the methods \textbf{obs},\textbf{obs\_M} are exactly the same since the observations of the observation points are all accurate. We only need to compare the \textbf{obs} and \textbf{total} methods and analyze whether the predictive output method can output better points as the final result. Of course, it makes sense to consider \textbf{obs} as the most reasonable output method under noise-free conditions. The main purpose of our noise-free experiments is to investigate the specific gap between the optimization efficiency of these two output methods under noise-free conditions. Table 2 details the specific differences between these two output methods:
   \begin{table}[!ht]
+    \renewcommand{\arraystretch}{1.3}
     \centering
     \resizebox{1\columnwidth}{!}{
     \begin{tabular}{|c|ccc|c|ccc|}
@@ -317,7 +311,7 @@ The choice of output method will align with the selection of acquisition functio
 \end{table}
 
  
-  \hspace{2em}The first two columns in the table are the loss rate of the output methods $obs, total$ relative to the global optimal value of each function. The third columns is the relative loss rates of sequence $total$ and sequence $obs$ respectively. For 2D problems, It can be seen intuitively that the optimization performance of the predictive $total$ on functions F2, F10, F11, and F12 is very poor. Looking back at Table 1, we can find that these functions all have a common feature: the conditioning is extremely high (both exceed $10^6$). The corresponding standard deviations of these functions also have large values, which makes the corresponding noise values also large. Excessive noise can easily cover the original structural characteristics of the function, making the modeling of Gaussian process extremely difficult and unable to achieve a good prediction effect. In fact, observing Table 2, we can find that the loss rate of $obs$ corresponding to these four functions is also relatively large, which shows that ordinary Bayesian optimization will also be affected by low modeling accuracy when facing this type of problem. Therefore, we can conclude that for noise-free problems, if the modeling accuracy of the Gaussian process is not good, it is unacceptable to use predictive output methods. For simpler functions, judging from the results in the third column, the loss rate of $total$ relative to $obs$ is mostly above $10\%$. For more complex functions F10, F12, etc., the optimization results are even more unacceptable. Therefore, for noise-free problems, we should indeed directly use the observation-based Bayesian optimization result output method (The loss rate of $output3$ relative to $obs$ in all test functions is greater than 0). For 4D problems, the conclution remains same, however, after increasing the dimension, we find that the relative loss rate of A and B begins to decrease on many functions.This will be discussed later in the article.
+  \hspace{2em}The first two columns in the table are the loss rate of the output methods $obs, total$ relative to the global optimal value of each test function. The third columns is the relative loss rates of sequence $total$ and sequence $obs$ respectively. For 2D problems, it's evident that the that the optimization efficiency of the predictive $total$, when applied to functions F2, F10, F11, and F12, is notably subpar. Reflecting on Table 1 reveals a shared characteristic among these functions: their conditioning levels are notably elevated, surpassing the $10^6$ limit. These functions' respective standard deviations hold significant values, leading to high noise values. Excessive noise can easily obscure the original structural characteristics of the function, complicating the Gaussian process modeling and hindering its predictive value. By examining Table 2, it becomes apparent that the loss rate of $obs$ related to these four functions is considerably higher, indicating that typical Bayesian optimization struggles due to diminished modeling precision in such scenario. Therefore, it can be concluded that for noise-free problems, poor Gaussian process modeling precision renders the application of predictive output techniques intolerable. For simpler functions, judging from the results in the third column, the loss rate of $total$ relative to $obs$ is mostly above $10\%$. For more complex functions F10, F12, etc., the resultss of optimization become increasingly dissatisfying. Therefore, for noise-free problems, we should indeed directly use the observation-based Bayesian optimization result output method (The loss rate of $output3$ relative to $obs$ in all test functions is greater than 0). For 4D problems, the conclution remains same, however, after increasing the dimension, we find that the relative loss rate of these two output methods begins to decrease on many functions.This will be discussed later in the article.
 
 
   \subsection{Experimental results with noise problems}
@@ -327,44 +321,44 @@ The choice of output method will align with the selection of acquisition functio
     \centering
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn1_S2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/S/Fn1_S2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn2_S2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/S/Fn2_S2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn7_S2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/S/Fn7_S2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn8_S2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/S/Fn8_S2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn10_S2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/S/Fn10_S2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn13_S2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/S/Fn13_S2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn18_S2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/S/Fn18_S2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn19_S2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/S/Fn19_S2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn22_S2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/S/Fn22_S2D_ins.png}
     \end{subfigure}
     \caption{2D optimization results(small noise)}
     \label{Fig2}
 \end{figure}
-\hspace{2em}In the two-dimensional small noise optimization result image, we can see that the curve of EI is always above the curve of EIM, which essentially reflects the difference between the two acquisition functions in terms of point selection strategy: EI is more inclined to explore and EIM is more inclined to development. There is no superiority or disadvantage between these two strategies, for different optimization problems they will have different optimization results. For the three output methods, since we all choose the output point after the budget is exhausted as the final output result, we can directly judge the quality of their output results by observing the average regret corresponding to the end of the curve.
+\hspace{2em}In the two-dimensional small noise optimization result figures, we can see that the curve of EI is always above the curve of EIM, which essentially reflects the difference between the two acquisition functions in terms of point selection strategy: EI is more inclined to explore and EIM is more inclined to development. There is no superiority or disadvantage between these two strategies, for different optimization problems they will have different optimization results. For the three output methods, since we all choose the output point after the budget is exhausted as the final output result, we can directly judge the quality of their output results by observing the average regret corresponding to the end of the curve.
 
 \hspace{2em}Let's start with two predictive output methods. From Figure2, there is little difference between obs\_M and total in the final optimization results, but the output of total shows great instability in some functions. For example, for the function Fn18, the output of total in turns 280-290 fluctuates greatly. Considering that our budget is actually arbitrary, if the budget happens to be between 280-290, the final output returned by total will be very bad. Compared with total, the output value of obs\_M is more stable, so for two-dimensional problems with small noise, we recommend using obs\_M instead of total if you want to use a predictive output method.
 
@@ -374,37 +368,44 @@ The choice of output method will align with the selection of acquisition functio
     \centering
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn1_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/M/Fn1_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn7_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/M/Fn2_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn8_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/M/Fn7_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn13_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/M/Fn8_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn18_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/M/Fn10_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn19_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/M/Fn13_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/Fn22_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/M/Fn18_M2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/M/Fn19_M2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/M/Fn22_M2D_ins.png}
     \end{subfigure}
     \caption{2D optimization results(Medium noise)}
     \label{Fig3}
 \end{figure}
-
-
+\hspace{2em}Figure 3 illustrates the optimization results with medium noise levels. It can be seen that after the noise increases, for most test functions, the gap between the observant output method OBS and the predictive output method further increases. In general, the conclusions of choosing output methods are basically consistent with those of small noise.
 
 \bibliographystyle{unsrtnat}
 \bibliography{references}  %%% Uncomment this line and comment out the ``thebibliography'' section below to use the external .bib file (using bibtex) .
@@ -449,87 +450,133 @@ where $mathcal{N}(0,1)$ represents random sampling from the standard normal dist
     \centering
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old/Fn1_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old_EIM/Fn1_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old/Fn2_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old_EIM/Fn2_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old/Fn7_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old_EIM/Fn7_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old/Fn8_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old_EIM/Fn8_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old/Fn10_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old_EIM/Fn10_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old/Fn14_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old_EIM/Fn13_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old/Fn18_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old_EIM/Fn18_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old/Fn19_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old_EIM/Fn19_M2D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old/Fn22_M2D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old_EIM/Fn22_M2D_ins.png}
     \end{subfigure}
     \caption{2D optimization results(Non-homogeneous noise)}
     \label{Fig4}
 \end{figure}
-
-The results reflected in the figures are basically similar to those in 4.2, with the only difference being that for functions with large standard deviations (e.g., Fn10), the observative output methods in non-homogeneous noise is much better than the predictive output method. This is because when the noise value is positively correlated with the true value of the function, the point with the smaller value of the function corresponds to the less noise, so if we observe that the value of a point is small, it is most likely because the function value corresponding to that point is also small, rather than due to extreme noise. In this case, the observant output method is more reliable than the predictive output methods, even if noise is affected.
+The results reflected in the figures are basically similar to those in 4.2, with the only difference being that for functions with large standard deviations (e.g. Fn2, Fn10), the observative output methods in non-homogeneous noise is much better than the predictive output method. This is because when the noise value is positively correlated with the true value of the function, the point with the smaller value of the function corresponds to the less noise, so if we observe that the value of a point is small, it is most likely because the function value corresponding to that point is also small, rather than due to extreme noise. In this case, the observant output method is more reliable than the predictive output methods, even if noise is affected.
 
 \subsection{4-dimensional experiments}
 Keeping the other settings unchanged, now we increase the dimension of the test function to 4 dimensions (the number of initial points and the total budget are increased to 40 and 400 respectively), and we get the following result:
 
- \begin{figure}[H]
+ \begin{figure}[htb]
     \centering
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D_old/Fn1_M4D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn1_S4D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D_old/Fn7_M4D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn2_S4D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D_old/Fn8_M4D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn7_S4D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D_old/Fn10_M4D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn8_S4D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D_old/Fn14_M4D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn10_S4D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D_old/Fn18_M4D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn13_S4D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D_old/Fn19_M4D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn18_S4D_ins.png}
     \end{subfigure}
     \begin{subfigure}[t]{.32\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D_old/Fn22_M4D_ins.png}
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn19_S4D_ins.png}
     \end{subfigure}
-    \caption{2D optimization results(Non-homogeneous noise)}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn22_S4D_ins.png}
+    \end{subfigure}
+    \caption{4D optimization results(homogeneous noise)}
     \label{Fig5}
 \end{figure}
 From the 4D image, we can draw conclusions that are basically the same as those of 2D. We noticed that after the dimension increased, total began to show a certain competitiveness compared with the other two output methods, especially in the simplest test function, Fn1, which was significantly ahead of the other two output methods. The characteristic of total is that it is a completely exploitation output method, although obs\_M also output the maximum value of prediction mean, but its output is limited to the observations selected by the acquisition function EI. As we mentioned earlier, EI is an exploratory algorithm, and the size of the search space increases dramatically when the dimension is increased to 4D, so that the benefits of exploration in a limited budget may be much lower than that of exploitation. However, there is still some instability in the output result of total (for example, Fn18), and the final result is not significantly better than obs\_M in most test functions, so we still do not recommend using the total output method under four-dimensional conditions.
 
+\section{Large homogeneous noise experimental results}
+\subsection{2-dimensional experiments}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/L/Fn1_L2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/L/Fn2_L2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/L/Fn7_L2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/L/Fn8_L2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/L/Fn10_L2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/L/Fn13_L2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/L/Fn18_L2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/L/Fn19_L2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/L/Fn22_L2D_ins.png}
+    \end{subfigure}
+    \caption{2D optimization results(Large noise)}
+    \label{Fig6}
+\end{figure}
 \end{document}
 

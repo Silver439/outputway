@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.3)  11 APR 2024 10:31
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.3)  30 JUN 2024 17:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -427,42 +427,51 @@ Package caption Info: New subtype `subfigure' on input line 239.
 \c@subfigure=\count307
 Package caption Info: New subtype `subtable' on input line 239.
 \c@subtable=\count308
+) (d:/texlive/2023/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip89
+\enit@outerparindent=\dimen196
+\enit@toks=\toks31
+\enit@inbox=\box67
+\enit@count@id=\count309
+\enitdp@description=\count310
 ) (d:/texlive/2023/texmf-dist/tex/latex/doi/doi.sty
 Package: doi 2018/09/09 handle doi numbers
 ) (d:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2023-01-16 L3 backend support: XeTeX
-\g__graphics_track_int=\count309
-\l__pdf_internal_box=\box67
-\g__pdf_backend_object_int=\count310
-\g__pdf_backend_annotation_int=\count311
-\g__pdf_backend_link_int=\count312
-) (./template.aux)
+\g__graphics_track_int=\count311
+\l__pdf_internal_box=\box68
+\g__pdf_backend_object_int=\count312
+\g__pdf_backend_annotation_int=\count313
+\g__pdf_backend_link_int=\count314
+)
+No file template.aux.
 \openout1 = `template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 75.
- (d:/texlive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 76.
+(d:/texlive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -530,38 +539,40 @@ LaTeX Font Info:    ... okay on input line 75.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 75.
-(./template.out) (./template.out)
+Package hyperref Info: Link coloring OFF on input line 76.
 \@outlinefile=\write3
 \openout3 = `template.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 75.
-Package microtype Info: Applying patch `item' on input line 75.
-Package microtype Info: Applying patch `toc' on input line 75.
-Package microtype Info: Applying patch `eqnum' on input line 75.
-Package microtype Info: Applying patch `footnote' on input line 75.
-Package microtype Info: Applying patch `verbatim' on input line 75.
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+LaTeX Info: Redefining \microtypecontext on input line 76.
+Package microtype Info: Applying patch `item' on input line 76.
+Package microtype Info: Applying patch `toc' on input line 76.
+Package microtype Info: Applying patch `eqnum' on input line 76.
+Package microtype Info: Applying patch `footnote' on input line 76.
+Package microtype Info: Applying patch `verbatim' on input line 76.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of spacing.
 Package microtype Info: No adjustment of kerning.
- (d:/texlive/2023/texmf-dist/tex/latex/microtype/mt-ptm.cfg
+(d:/texlive/2023/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-\c@lstlisting=\count313
+\c@lstlisting=\count315
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (d:/texlive/2023/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
  (d:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (d:/texlive/2023/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
  (d:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (d:/texlive/2023/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -569,7 +580,7 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 File: orcid.pdf Graphic file (type pdf)
 <use orcid.pdf>
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 77.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 78.
  (d:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -577,121 +588,209 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [1
 
 
-] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 143--146
+Package natbib Warning: Citation `Shahriari2016taking' on page 1 undefined on input line 93.
+
+
+Package natbib Warning: Citation `Rasmussen2005Gaussian' on page 1 undefined on input line 93.
+
+
+Package natbib Warning: Citation `Jones1998Efficient' on page 1 undefined on input line 96.
+
+
+Package natbib Warning: Citation `Hansen2010RealParameterBO' on page 1 undefined on input line 96.
+
+[1
+
+
+]
+Underfull \vbox (badness 2753) has occurred while \output is active []
+
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 142--145
 
  []
 
+
+Package natbib Warning: Citation `Jones1998Efficient' on page 3 undefined on input line 160.
+
+
+Package natbib Warning: Citation `Srinivas2009Gaussian' on page 3 undefined on input line 160.
+
+
+Package natbib Warning: Citation `Thompson1933On' on page 3 undefined on input line 160.
+
+
+Package natbib Warning: Citation `Hennig2012Entropy' on page 3 undefined on input line 160.
+
 Missing character: There is no 。 ("3002) in font ptmr8t!
-[3] [4]
+[3]
+
+Package natbib Warning: Citation `Huang2006Global' on page 4 undefined on input line 182.
+
+
+Package natbib Warning: Citation `Forrester2006Design' on page 4 undefined on input line 182.
+
+
+Package natbib Warning: Citation `Picheny2012Quantile' on page 4 undefined on input line 182.
+
+
+Package natbib Warning: Citation `Picheny2013benchmark' on page 4 undefined on input line 182.
+
+
+Package natbib Warning: Citation `Hansen2010RealParameterBO' on page 4 undefined on input line 189.
+
+
+Package natbib Warning: Citation `Bossek2020Initial' on page 4 undefined on input line 230.
+
+[4]
 File: D:/outputway/arXiv/figures/EI.jpg Graphic file (type bmp)
 <D:/outputway/arXiv/figures/EI.jpg>
 File: D:/outputway/arXiv/figures/EIM.jpg Graphic file (type bmp)
 <D:/outputway/arXiv/figures/EIM.jpg>
  [5] [6]
-File: D:/outputway/pictures/noise2D/Fn1_S2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn1_S2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn2_S2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn2_S2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn7_S2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn7_S2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn8_S2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn8_S2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn10_S2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn10_S2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn13_S2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn13_S2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn18_S2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn18_S2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn19_S2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn19_S2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn22_S2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn22_S2D_ins.png>
+File: D:/outputway/pictures/noise2D/S/Fn1_S2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/S/Fn1_S2D_ins.png>
+File: D:/outputway/pictures/noise2D/S/Fn2_S2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/S/Fn2_S2D_ins.png>
+File: D:/outputway/pictures/noise2D/S/Fn7_S2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/S/Fn7_S2D_ins.png>
+File: D:/outputway/pictures/noise2D/S/Fn8_S2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/S/Fn8_S2D_ins.png>
+File: D:/outputway/pictures/noise2D/S/Fn10_S2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/S/Fn10_S2D_ins.png>
+File: D:/outputway/pictures/noise2D/S/Fn13_S2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/S/Fn13_S2D_ins.png>
+File: D:/outputway/pictures/noise2D/S/Fn18_S2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/S/Fn18_S2D_ins.png>
+File: D:/outputway/pictures/noise2D/S/Fn19_S2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/S/Fn19_S2D_ins.png>
+File: D:/outputway/pictures/noise2D/S/Fn22_S2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/S/Fn22_S2D_ins.png>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2197) has occurred while \output is active []
 
  [7]
-File: D:/outputway/pictures/noise2D/Fn1_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn1_M2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn7_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn7_M2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn8_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn8_M2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn13_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn13_M2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn18_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn18_M2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn19_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn19_M2D_ins.png>
-File: D:/outputway/pictures/noise2D/Fn22_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D/Fn22_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/M/Fn1_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/M/Fn1_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/M/Fn2_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/M/Fn2_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/M/Fn7_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/M/Fn7_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/M/Fn8_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/M/Fn8_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/M/Fn10_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/M/Fn10_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/M/Fn13_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/M/Fn13_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/M/Fn18_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/M/Fn18_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/M/Fn19_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/M/Fn19_M2D_ins.png>
+File: D:/outputway/pictures/noise2D/M/Fn22_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/M/Fn22_M2D_ins.png>
  (./template.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8]
 Underfull \hbox (badness 1057) in paragraph at lines 9--13
 \T1/ptm/m/n/10 out of the loop: A re-view of bayesian op-ti-miza-tion.  \T1/ptm/m/it/10 Pro-ceed-ings of the IEEE\T1/ptm/m/n/10 , 104(1):148--175, 2016.
  []
 
-[8]
 Missing character: There is no – ("2013) in font ptmr8t!
 Missing character: There is no – ("2013) in font ptmr8t!
 )
-File: D:/outputway/pictures/noise2D_old/Fn1_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D_old/Fn1_M2D_ins.png>
-File: D:/outputway/pictures/noise2D_old/Fn2_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D_old/Fn2_M2D_ins.png>
-File: D:/outputway/pictures/noise2D_old/Fn7_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D_old/Fn7_M2D_ins.png>
-File: D:/outputway/pictures/noise2D_old/Fn8_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D_old/Fn8_M2D_ins.png>
-File: D:/outputway/pictures/noise2D_old/Fn10_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D_old/Fn10_M2D_ins.png>
-File: D:/outputway/pictures/noise2D_old/Fn14_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D_old/Fn14_M2D_ins.png>
-File: D:/outputway/pictures/noise2D_old/Fn18_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D_old/Fn18_M2D_ins.png>
-File: D:/outputway/pictures/noise2D_old/Fn19_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D_old/Fn19_M2D_ins.png>
-File: D:/outputway/pictures/noise2D_old/Fn22_M2D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise2D_old/Fn22_M2D_ins.png>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+File: D:/outputway/pictures/noise2D_old_EIM/Fn1_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old_EIM/Fn1_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old_EIM/Fn2_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old_EIM/Fn2_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old_EIM/Fn7_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old_EIM/Fn7_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old_EIM/Fn8_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old_EIM/Fn8_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old_EIM/Fn10_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old_EIM/Fn10_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old_EIM/Fn13_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old_EIM/Fn13_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old_EIM/Fn18_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old_EIM/Fn18_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old_EIM/Fn19_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old_EIM/Fn19_M2D_ins.png>
+File: D:/outputway/pictures/noise2D_old_EIM/Fn22_M2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D_old_EIM/Fn22_M2D_ins.png>
  [9]
-File: D:/outputway/pictures/noise4D_old/Fn1_M4D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise4D_old/Fn1_M4D_ins.png>
-File: D:/outputway/pictures/noise4D_old/Fn7_M4D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise4D_old/Fn7_M4D_ins.png>
-File: D:/outputway/pictures/noise4D_old/Fn8_M4D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise4D_old/Fn8_M4D_ins.png>
-File: D:/outputway/pictures/noise4D_old/Fn10_M4D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise4D_old/Fn10_M4D_ins.png>
-File: D:/outputway/pictures/noise4D_old/Fn14_M4D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise4D_old/Fn14_M4D_ins.png>
-File: D:/outputway/pictures/noise4D_old/Fn18_M4D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise4D_old/Fn18_M4D_ins.png>
-File: D:/outputway/pictures/noise4D_old/Fn19_M4D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise4D_old/Fn19_M4D_ins.png>
-File: D:/outputway/pictures/noise4D_old/Fn22_M4D_ins.png Graphic file (type bmp)
-<D:/outputway/pictures/noise4D_old/Fn22_M4D_ins.png>
+File: D:/outputway/pictures/noise4D/S/Fn1_S4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D/S/Fn1_S4D_ins.png>
+File: D:/outputway/pictures/noise4D/S/Fn2_S4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D/S/Fn2_S4D_ins.png>
+File: D:/outputway/pictures/noise4D/S/Fn7_S4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D/S/Fn7_S4D_ins.png>
+File: D:/outputway/pictures/noise4D/S/Fn8_S4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D/S/Fn8_S4D_ins.png>
+File: D:/outputway/pictures/noise4D/S/Fn10_S4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D/S/Fn10_S4D_ins.png>
+File: D:/outputway/pictures/noise4D/S/Fn13_S4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D/S/Fn13_S4D_ins.png>
+File: D:/outputway/pictures/noise4D/S/Fn18_S4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D/S/Fn18_S4D_ins.png>
+File: D:/outputway/pictures/noise4D/S/Fn19_S4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D/S/Fn19_S4D_ins.png>
+File: D:/outputway/pictures/noise4D/S/Fn22_S4D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise4D/S/Fn22_S4D_ins.png>
+File: D:/outputway/pictures/noise2D/L/Fn1_L2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/L/Fn1_L2D_ins.png>
+File: D:/outputway/pictures/noise2D/L/Fn2_L2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/L/Fn2_L2D_ins.png>
+File: D:/outputway/pictures/noise2D/L/Fn7_L2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/L/Fn7_L2D_ins.png>
+File: D:/outputway/pictures/noise2D/L/Fn8_L2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/L/Fn8_L2D_ins.png>
+File: D:/outputway/pictures/noise2D/L/Fn10_L2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/L/Fn10_L2D_ins.png>
+File: D:/outputway/pictures/noise2D/L/Fn13_L2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/L/Fn13_L2D_ins.png>
+File: D:/outputway/pictures/noise2D/L/Fn18_L2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/L/Fn18_L2D_ins.png>
+File: D:/outputway/pictures/noise2D/L/Fn19_L2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/L/Fn19_L2D_ins.png>
+File: D:/outputway/pictures/noise2D/L/Fn22_L2D_ins.png Graphic file (type bmp)
+<D:/outputway/pictures/noise2D/L/Fn22_L2D_ins.png>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [10] [11] (./template.aux)
+ [10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11]
+
+Package natbib Warning: There were undefined citations.
+
+[12] (./template.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package rerunfilecheck Info: File `template.out' has not changed.
-(rerunfilecheck)             Checksum: 367C00E4F3FFA057EC4F1018A271C381;2510.
+
+Package rerunfilecheck Warning: File `template.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `template.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  3B3D5D8E9B4DA73BB4643A051145DF20;2974.
  ) 
 Here is how much of TeX's memory you used:
- 16388 strings out of 478630
- 275083 string characters out of 5847731
- 1871012 words of memory out of 5000000
- 36252 multiletter control sequences out of 15000+600000
+ 16809 strings out of 478630
+ 285871 string characters out of 5847731
+ 1870012 words of memory out of 5000000
+ 36662 multiletter control sequences out of 15000+600000
  559538 words of font info for 74 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 72i,13n,77p,2401b,552s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,13n,77p,2187b,552s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on template.pdf (11 pages).
+Output written on template.pdf (12 pages).
