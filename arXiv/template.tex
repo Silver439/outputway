@@ -311,11 +311,11 @@ The choice of output method will align with the selection of acquisition functio
 \end{table}
 
  
-  \hspace{2em}The first two columns in the table are the loss rate of the output methods $obs, total$ relative to the global optimal value of each test function. The third columns is the relative loss rates of sequence $total$ and sequence $obs$ respectively. For 2D problems, it's evident that the that the optimization efficiency of the predictive $total$, when applied to functions F2, F10, F11, and F12, is notably subpar. Reflecting on Table 1 reveals a shared characteristic among these functions: their conditioning levels are notably elevated, surpassing the $10^6$ limit. These functions' respective standard deviations hold significant values, leading to high noise values. Excessive noise can easily obscure the original structural characteristics of the function, complicating the Gaussian process modeling and hindering its predictive value. By examining Table 2, it becomes apparent that the loss rate of $obs$ related to these four functions is considerably higher, indicating that typical Bayesian optimization struggles due to diminished modeling precision in such scenario. Therefore, it can be concluded that for noise-free problems, poor Gaussian process modeling precision renders the application of predictive output techniques intolerable. For simpler functions, judging from the results in the third column, the loss rate of $total$ relative to $obs$ is mostly above $10\%$. For more complex functions F10, F12, etc., the resultss of optimization become increasingly dissatisfying. Therefore, for noise-free problems, we should indeed directly use the observation-based Bayesian optimization result output method (The loss rate of $output3$ relative to $obs$ in all test functions is greater than 0). For 4D problems, the conclution remains same, however, after increasing the dimension, we find that the relative loss rate of these two output methods begins to decrease on many functions.This will be discussed later in the article.
+  \hspace{2em}The first two columns in the table are the loss rate of the output methods \textbf{obs},\textbf{obs\_M} relative to the global optimal value of each test function. The third columns is the relative loss rates of these two output methods. For two-dimensional problems, the predictive method \textbf{total} is significantly less efficient in optimization than \textbf{obs} when applied to the functions F2, F10, F11, and F12. A review of Table 1 reveals a common feature of these functions: their conditioning levels are significantly high, exceeding $10^6$. The standard deviation of each of these functions is very large, resulting in high noise levels. The high noise level can easily mask the original structural characteristics of the objective function, making it difficult to build a suitable model for the Gaussian process to predict. By examining Table 2, it can be seen that the loss rate of \textbf{obs} is likewise relatively high on these four functions compared to the others, which further suggests that the surrogate model struggles due to high conditioning levels. Therefore, it can be concluded that for noiseless problems, low accuracy in surrogate model modeling can greatly increase the loss rate of predictive output methods, in which case observational output method \textbf{obs} is more plausible. For simpler functions, the results in the third column show that the loss ratio of \textbf{total} relative to \textbf{obs} is mostly above $10\%$. For more complex functions such as F10, F12, etc., the gap between the optimization results will increase further. Therefore, for noise-free problems, we should indeed directly use the observation-based Bayesian optimization result output method (The loss rate of \textbf{total} relative to \textbf{obs} in all test functions is greater than 0). For 4D problems, the conclution remains same, however, after increasing the dimension, we find that the relative loss rate of these two output methods begins to decrease on many functions.This will be discussed later in the article.
 
 
-  \subsection{Experimental results with noise problems}
-  \hspace{2em}In the previous section, we briefly compared the optimization results of the observative and predictive outputs on 24 noise-free functions. In this section, we will pick out some functions and add noise to them as new optimization problems. In order to ensure the consistency of the conclusions, we will use EI as the acquisition function for the observable output method (obs), and EIM for the predictive output method (obs\_M, total). It was noted that in the noisy problems, obs is no longer exactly the same as obs\_M, as the observed value will no longer be true.(See Section 3.2 for details on noise settings). We will use the Instant Regret as the vertical axis of the figures, and the number of iterations of BO as the horizontal axis to generate curves for analysis. For example, in each iteration of BO, EI selects a point as the next observation. We subtract the optimal value of the function from the value of the real function corresponding to the selected point to get the instantant regret value of EI at the corresponding round. EIM can do the same for a similar curve, and for comparison, we have added a curve corresponding to the acquisition function (denoted random) completely choose points randomly. For our three output methods (obs, obs\_M, total), they will also choose a point as the output result of the round in each iteration of BO, so we can also obtain the instantant regret curves of the three methods in the same way for analysis and comparison.
+  \subsection{Experimental results for the 2D noise problem}
+  \hspace{2em}In the previous section, we briefly compared the optimization results of the observative and predictive outputs on 24 noise-free functions. In this section, we will pick out some functions and add noise to them as new optimization problems. In order to ensure the consistency of the conclusions, we will use EI as the acquisition function for the observable output method (\textbf{obs}), and EIM for the predictive output method (\textbf{obs\_M}, \textbf{total} ). It was noted that in the noisy problems, obs is no longer exactly the same as \textbf{obs\_M}, as the observed value will no longer be accurate.(See Section 3.2 for details on noise settings). We will use the Instant Regret as the vertical axis of the figures, and the number of iterations of BO as the horizontal axis to generate curves for analysis. For example, in each iteration of BO, EI selects a point as the next observation. We subtract the optimal value of the function from the value of the real function corresponding to the selected point to get the instantant regret value of EI at the corresponding round. EIM can do the same for a similar curve, and for comparison, we have added a curve corresponding to the acquisition function (denoted random) completely choose points randomly. For our three output methods (\textbf{obs},\textbf{obs\_M}, \textbf{total}), they will also choose a point as the output result of the round in each iteration of BO, so we can also obtain the instantant regret curves of the three methods in the same way for analysis and comparison.
   
 \begin{figure}[H]
     \centering
@@ -358,11 +358,12 @@ The choice of output method will align with the selection of acquisition functio
     \caption{2D optimization results(small noise)}
     \label{Fig2}
 \end{figure}
+
+\hspace{2em}It should be noted that the points found by the three acquisition functions(EI, EIM, random) described above at each iteration are used as the observation points of BO at the corresponding rounds, while the points found by the three output methods(\textbf{obs}, \textbf{obs\_M}, \textbf{total}) at each iteration are used as the output results of BO at the corresponding rounds. The meaning of these two is essentially different. We draw the curves of the three acquisition functions mainly to observe the difference of the point selection strategies of the three acquisition functions in different optimization problems; while the real interest of this paper is the difference of the three output methods, and the curves of the three acquisition functions are not the main research object. 
+
 \hspace{2em}In the two-dimensional small noise optimization result figures, we can see that the curve of EI is always above the curve of EIM, which essentially reflects the difference between the two acquisition functions in terms of point selection strategy: EI is more inclined to explore and EIM is more inclined to development. There is no superiority or disadvantage between these two strategies, for different optimization problems they will have different optimization results. For the three output methods, since we all choose the output point after the budget is exhausted as the final output result, we can directly judge the quality of their output results by observing the average regret corresponding to the end of the curve.
 
-\hspace{2em}Let's start with two predictive output methods. From Figure2, there is little difference between obs\_M and total in the final optimization results, but the output of total shows great instability in some functions. For example, for the function Fn18, the output of total in turns 280-290 fluctuates greatly. Considering that our budget is actually arbitrary, if the budget happens to be between 280-290, the final output returned by total will be very bad. Compared with total, the output value of obs\_M is more stable, so for two-dimensional problems with small noise, we recommend using obs\_M instead of total if you want to use a predictive output method.
-
-\hspace{2em}As for the observative output method obs, we can see from Figure2 that the final output result of obs is much worse than obs\_M on most of the test functions, and its curve will always be above the curve of obs\_M after fewer rounds of iterations. This means that for any arbitrary given budget, the final output of obs is worse than obs\_M. However, in terms of the optimization of the test function Fn19, we found that obs has obvious advantages over other output methods. Further observation of the corresponding images of Fn19 shows that the curves of EI, EIM, obs\_M, and total are basically clustered at the same height, which actually means that the GP model has a very poor modeling effect on function 19, the exploitation ability of the acquisition function is weak, and the prediction accuracy of the model is very low. In this case, the predictive output gives unreliable results. Therefore, for highly complex, low-accuracy modeling problems like Function 19, predictive output should be used with caution. For general noisy problems with good modeling accuracy, it is more reasonable to use predictive output method obs\_M.
+\hspace{2em}Let's start with two predictive output methods. From Figure2, there is little difference between \textbf{obs\_M} and \textbf{total} in the final optimization results, but the output of \textbf{total} shows great instability in some functions. For example, for the function Fn18, the output of \textbf{total} in turns 280-290 fluctuates greatly. Considering that our budget is actually arbitrary, if the budget happens to be between 280-290, the final output returned by \textbf{total} will be very bad. Compared with \textbf{total}, the output value of \textbf{obs\_M} is more stable, so for two-dimensional problems with small noise, we recommend using \textbf{obs\_M}instead of \textbf{total} if you want to use a predictive output method.
 
 \begin{figure}[H]
     \centering
@@ -405,7 +406,75 @@ The choice of output method will align with the selection of acquisition functio
     \caption{2D optimization results(Medium noise)}
     \label{Fig3}
 \end{figure}
-\hspace{2em}Figure 3 illustrates the optimization results with medium noise levels. It can be seen that after the noise increases, for most test functions, the gap between the observant output method OBS and the predictive output method further increases. In general, the conclusions of choosing output methods are basically consistent with those of small noise.
+
+\hspace{2em}As for the observative output method obs, we can see from Figure2 that the final output result of obs is much worse than \textbf{obs\_M} on most of the test functions, and its curve will always be above the curve of \textbf{obs\_M} after fewer rounds of iterations. This means that for any arbitrary given budget, the final output of obs is worse than \textbf{obs\_M}. However, in terms of optimization of the test function Fn19 , we find that obs has a clear advantage over other output methods. Further observation of the image corresponding to Fn19 reveals that the curves of EI, EIM, \textbf{obs\_M}, and  \textbf{total} are basically clustered at the same height, which actually indicates that the GP model models the function 19 poorly, the exploitation ability of the acquisition function is weak, and the prediction accuracy of the model is low. In this case, the results of the predictive output method are unreliable. Therefore, predictive output should be used with caution for highly complex problems with low modeling accuracy like Function 19. For general noise problems with good modeling accuracy, it is more reasonable to use predictive output methods (\textbf{obs\_M}). 
+
+\hspace{2em}Figure3 illustrates the optimization results for moderate noise levels. It can be seen that with increased noise, the gap between the observational output method \textbf{obs} and the predictive output method widens further for most of the test functions. Overall, the conclusions for the choice of output methods are generally consistent with those under small noise.That is, for most problems with small noise, the use of the \textbf{obs\_M} output method is the best choice. The use of \textbf{obs} only needs to be considered if one is convinced that BO's surrogate has low predict accuracy, but in fact replacing the model may be the better choice in such cases. If we increase the noise level further (see Appendix B for details), the above conclusions still hold true, and when noise level is too high, the advantage of \textbf{obs} in Fn19 even no longer exists.
+
+\subsection{Experimental results for the 4D noise problem}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn1_S4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn2_S4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn7_S4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn8_S4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn10_S4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn13_S4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn18_S4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn19_S4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn22_S4D_ins.png}
+    \end{subfigure}
+    \caption{4D optimization results(small noise)}
+    \label{Fig4}
+\end{figure}
+
+\hspace{2em}In this section we increase the dimensionality of the optimisation problem from 2 to 4, which will allow the search space to expand geometrically. Figure 4 shows the optimisation results on a low noise level problem. Compared to the 2-dimensional image, we can clearly notice that the output method \textbf{total} starts to become competitive. For example, on the function Fn1, which is the simplest form and the least difficult to optimise, textbf{total} outputs far better results than the other output methods. The same is true on function Fn13. There is also a small advantage over \textbf{obs\_M} on functions Fn7 and Fn18. This is mainly due to the fact that \textbf{obs\_M} can only select among the points that have been observed, and even though we have increased the maximum number of iterations to 400 for the four-dimensional problem, 400 points is still too few for a four-dimensional search space. And, as we discussed earlier, both for EI and EIM, these acquisition functions selected points are not used exclusively for exploitation; they are also required to undertake certain exploration tasks. This leads to a further reduction in the proportion of these 400 points that contain higher points. In the case of \textbf{total}, on the other hand, the 400 points it selects are fully focused on exploitation and are not limited to observed points. This makes it more likely to find local optimal value points. Whereas for higher dimensional problems, too large a search space can make it extremely difficult to find the global optimal solution, in which case finding the local optimal solution may instead be a better choice. However, it is worth noting that raising the dimensionality does not solve the problem of the instability of \textbf{total} output results. For example, on Fn22 \textbf{total} still has large fluctuations, which means that it is still possible that it may give an extremely bad point as an optimisation result for output in a particular experiment. There is no denying that \textbf{total} is competitive in slightly higher dimensional optimisation problems, but choosing it still carries the risk of instability. Therefore, we take a conservative view on the use of \textbf{total}, i.e., it should be used with caution. In contrast, the performance of \textbf{obs\_M} remains relatively stable. It outperforms \textbf{obs} on all test problems except Fn19, and is not significantly weaker or even better than \textbf{total} on most problems. Taken together, \textbf{obs\_M} continues to be the most reasonable choice in 4 dimensions with low noise levels. We similarly tried to continue to increase the noise level (see Appendix B for details) and the conclusions obtained remains the same.
+
+\section{Conclusion}
+
+\hspace{2em}In the previous section we conducted numerical experiments on optimisation test problems without noise and with different noise levels and dimensions. The main conclusions are summarised as follows: 
+
+
+\begin{itemize}[itemsep=2pt,topsep=0pt,parsep=0pt]
+    \item[$\bullet$] For the noiseless problem, directly using the observation-based output \textbf{obs} is the most reasonable choice. 
+    \item[$\bullet$] For the noisy problem, using the predictive-based output is superior to the observation-based output in most of the cases, even when the noise level is low.Considering that the output results of \textbf{total} are not stable, the use of \textbf{obs\_M} is the most reasonable choice.
+    \item[$\bullet$] For more complex problems, when the prediction accuracy of BO's surrogate model is low, the predictive-based output method should be used with caution. This is because the model's prediction of the objective function is less credible. In this case, the choice of observation-based output will often give better output results, but in practice it is meaningless. If we can be sure that the model is less predictive, then we should consider replacing the model rather than discussing what output to use.
+    \item[$\bullet$] When the optimisation problem is of high dimensionality, the use of \textbf{total} can be considered, but it still carries the risk of unstable output results.  
+       
+    \end{itemize} 
+
+\hspace{2em}It is also worth mentioning that the form of the noise can likewise influence the choice of output methods. Our experiments above only discuss homogeneous noise, and the conclusions may change when the noise becomes non-homogeneous. We briefly discuss this scenario in Appendix A and give the corresponding experimental results.
+
+
+
+\clearpage
 
 \bibliographystyle{unsrtnat}
 \bibliography{references}  %%% Uncomment this line and comment out the ``thebibliography'' section below to use the external .bib file (using bibtex) .
@@ -435,6 +504,7 @@ The choice of output method will align with the selection of acquisition functio
 
 % \end{thebibliography}
 
+\clearpage
 
 {\centering\section*{Appendix}}
 \appendix
@@ -485,14 +555,14 @@ where $mathcal{N}(0,1)$ represents random sampling from the standard normal dist
         \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D_old_EIM/Fn22_M2D_ins.png}
     \end{subfigure}
     \caption{2D optimization results(Non-homogeneous noise)}
-    \label{Fig4}
+    \label{Fig5}
 \end{figure}
 The results reflected in the figures are basically similar to those in 4.2, with the only difference being that for functions with large standard deviations (e.g. Fn2, Fn10), the observative output methods in non-homogeneous noise is much better than the predictive output method. This is because when the noise value is positively correlated with the true value of the function, the point with the smaller value of the function corresponds to the less noise, so if we observe that the value of a point is small, it is most likely because the function value corresponding to that point is also small, rather than due to extreme noise. In this case, the observant output method is more reliable than the predictive output methods, even if noise is affected.
 
 \subsection{4-dimensional experiments}
 Keeping the other settings unchanged, now we increase the dimension of the test function to 4 dimensions (the number of initial points and the total budget are increased to 40 and 400 respectively), and we get the following result:
 
- \begin{figure}[htb]
+ \begin{figure}[ht]
     \centering
     \begin{subfigure}[t]{.32\linewidth}
         \centering
@@ -531,11 +601,11 @@ Keeping the other settings unchanged, now we increase the dimension of the test 
         \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/S/Fn22_S4D_ins.png}
     \end{subfigure}
     \caption{4D optimization results(homogeneous noise)}
-    \label{Fig5}
+    \label{Fig6}
 \end{figure}
 From the 4D image, we can draw conclusions that are basically the same as those of 2D. We noticed that after the dimension increased, total began to show a certain competitiveness compared with the other two output methods, especially in the simplest test function, Fn1, which was significantly ahead of the other two output methods. The characteristic of total is that it is a completely exploitation output method, although obs\_M also output the maximum value of prediction mean, but its output is limited to the observations selected by the acquisition function EI. As we mentioned earlier, EI is an exploratory algorithm, and the size of the search space increases dramatically when the dimension is increased to 4D, so that the benefits of exploration in a limited budget may be much lower than that of exploitation. However, there is still some instability in the output result of total (for example, Fn18), and the final result is not significantly better than obs\_M in most test functions, so we still do not recommend using the total output method under four-dimensional conditions.
 
-\section{Large homogeneous noise experimental results}
+\section{Other homogeneous noise experimental results}
 \subsection{2-dimensional experiments}
 \begin{figure}[H]
     \centering
@@ -576,7 +646,51 @@ From the 4D image, we can draw conclusions that are basically the same as those 
         \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise2D/L/Fn22_L2D_ins.png}
     \end{subfigure}
     \caption{2D optimization results(Large noise)}
-    \label{Fig6}
+    \label{Fig7}
+\end{figure}
+
+\subsection{4-dimensional experiments}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/M/Fn1_M4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/M/Fn2_M4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/M/Fn7_M4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/M/Fn8_M4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/M/Fn10_M4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/M/Fn13_M4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/M/Fn18_M4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/M/Fn19_M4D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/noise4D/M/Fn22_M4D_ins.png}
+    \end{subfigure}
+    \caption{4D optimization results(Medium noise)}
+    \label{Fig8}
 \end{figure}
 \end{document}
 
