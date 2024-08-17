@@ -1,10 +1,12 @@
 Data\olddata2D: 异质噪声，使用EIM
 Data\noise2D: 同质噪声，使用EIM
 Data\noise4D: 同质噪声，使用EIM
+Data\EInoise2D: 同质噪声，使用EI
 Data\data2D: 无噪声2D
 Data\data4D: 无噪声4D
 oldcode\DataOld\noise2D: 异质噪声，只用EI
 oldcode\DataOld\noise4D: 异质噪声，只用EI
+Data\EIMoldnoise2D: 异质噪声，只用EIM
 
 pictures\noise2D: 同质噪声，使用EIM
 pictures\noise2D_old: 异质噪声，只用EI
@@ -12,3 +14,4 @@ pictures\noise4D_old: 异质噪声，只用EI
 pictures\noise2D_old_EIM: 异质噪声，使用EIM
 pictures\picture2D: 无噪声2D
 pictures\picture4D: 无噪声4D
+pictures\EI_vsEIM: 使用EI和EIM两种情况下obs_M和total_M的对比(似乎EI更好一些...)

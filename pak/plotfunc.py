@@ -6,7 +6,8 @@ from matplotlib.pyplot import cm
 plt.rcParams['font.sans-serif']=['Microsoft YaHei']
 
 def plot_SimpleRegret(result_list,n_calls,true_minimum=None, yscale=None, title="Simple regret plot"): 
-
+    
+    plt.figure()
     ax = plt.gca()
     ax.set_title(title)
     ax.set_xlabel("Number of iterations")
@@ -31,6 +32,7 @@ def plot_SimpleRegret(result_list,n_calls,true_minimum=None, yscale=None, title=
 
 def plot_InstantRegret(result_list,n_calls,true_minimum=None, yscale=None, title="Instant regret plot"): 
 
+    plt.figure()
     ax = plt.gca()
     ax.set_title(title)
     ax.set_xlabel("Number of iterations")
