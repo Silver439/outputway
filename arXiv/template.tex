@@ -521,63 +521,11 @@ The choice of output method will align with the selection of the acquisition fun
 
 {\centering\section*{Appendix}}
 \appendix
-\section{Non-homogeneous noise experimental results}
-\subsection{2-dimensional experiments}
-The basic settings of the experiments are the same as those in 4.2, with the only difference being that the noise settings are no longer homogeneous variance, but are set as follows:
-\begin{equation}\label{eq11}
-	f_{GN}(f,\beta) = f \times exp(\beta\mathcal{N}(0,1)) 
-\end{equation}
-where $mathcal{N}(0,1)$ represents random sampling from the standard normal distribution, and $beta$ is the parameter that controls the magnitude of the noise, here we set it to 0.1. Note that the value of noise here will be related to the true value of the function. Also similar to 4.2, we give the following image of the experimental results:
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[t]{.32\linewidth}
-        \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Non-homo_noise_2D/Fn1_M2D_ins.png}
-    \end{subfigure}
-    \begin{subfigure}[t]{.32\linewidth}
-        \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Non-homo_noise_2D/Fn2_M2D_ins.png}
-    \end{subfigure}
-    \begin{subfigure}[t]{.32\linewidth}
-        \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Non-homo_noise_2D/Fn7_M2D_ins.png}
-    \end{subfigure}
-    \begin{subfigure}[t]{.32\linewidth}
-        \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Non-homo_noise_2D/Fn8_M2D_ins.png}
-    \end{subfigure}
-    \begin{subfigure}[t]{.32\linewidth}
-        \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Non-homo_noise_2D/Fn10_M2D_ins.png}
-    \end{subfigure}
-    \begin{subfigure}[t]{.32\linewidth}
-        \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Non-homo_noise_2D/Fn13_M2D_ins.png}
-    \end{subfigure}
-    \begin{subfigure}[t]{.32\linewidth}
-        \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Non-homo_noise_2D/Fn18_M2D_ins.png}
-    \end{subfigure}
-    \begin{subfigure}[t]{.32\linewidth}
-        \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Non-homo_noise_2D/Fn19_M2D_ins.png}
-    \end{subfigure}
-    \begin{subfigure}[t]{.32\linewidth}
-        \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Non-homo_noise_2D/Fn22_M2D_ins.png}
-    \end{subfigure}
-    \caption{2D optimization results(Non-homogeneous noise)}
-    \label{Fig5}
-\end{figure}
-The results reflected in the figures are basically similar to those in 4.2, with the only difference being that for functions with large standard deviations (e.g. Fn2, Fn10), the observative output methods in non-homogeneous noise is much better than the predictive output method. This is because when the noise value is positively correlated with the true value of the function, the point with the smaller value of the function corresponds to the less noise, so if we observe that the value of a point is small, it is most likely because the function value corresponding to that point is also small, rather than due to extreme noise. In this case, the observant output method is more reliable than the predictive output methods, even if noise is affected(which is the main difference with the homogeneous variance conclusion).
-
-
-\section{Other homogeneous noise experimental results}
+\section{Other complementary experiments}
 \subsection{2-dimensional experiments}
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[t]{.74\linewidth}
+    \begin{subfigure}[t]{.96\linewidth}
         \centering
         \includegraphics[width=1\textwidth]{D:/outputway/pictures/Homo_noise_2D/noise2D_L.png}
     \end{subfigure}
@@ -585,16 +533,88 @@ The results reflected in the figures are basically similar to those in 4.2, with
     \label{Fig7}
 \end{figure}
 
+\hspace{2em}In experiments with high noise levels in two dimensions, the GP model often becomes ineffective for most functions. The points selected by EI and EIM based on model predictions are no longer as good as if they had been chosen completely at random within the search space. In this scenario, the degradation of the model's predictive power seriously affects the output results of \textbf{obs\_M} and \textbf{total\_M}. Simultaneously, larger noise levels can also directly interfere with the effectiveness of \textbf{obs}. Overall, the extreme noise level causes significant disturbances in all three output methods. In this case, we find that the relative performance of the three output methods remains consistent with the results in Section 4.2: \textbf{obs} still lags behind the other two methods, except for Fn19. Compared to the other two output methods, \textbf{obs} is more directly impacted by extreme noise, which results in the loss of its original advantage on the Fn19 function. \textbf{obs\_M} and \textbf{total\_M} do not differ much in this set of experiments, and \textbf{total\_M} does not exhibit significant instability. However, This is in fact a matter of probability. Considering that \textbf{total\_M} selects output points from the entire search space based on the model's predictions, the risk of selecting extreme points still remains. It is not the case that its performance can be stabilized by increasing the noise level.
+
 \subsection{4-dimensional experiments}
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[t]{.74\linewidth}
+    \begin{subfigure}[t]{1\linewidth}
         \centering
-        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Homo_noise_4D/noise4D_M.png}
+        \includegraphics[width=.96\textwidth]{D:/outputway/pictures/Homo_noise_4D/noise4D_M.png}
     \end{subfigure}
     \caption{4D optimization results(Medium noise)}
     \label{Fig8}
 \end{figure}
-\end{document}
 
+\hspace{2em}In the four-dimensional experiment with medium noise levels,we get basically the same conclusion as the two-dimensional experiment mentioned above. We observe that the advantage of \textbf{obs} in Fn19 also disappears, and \textbf{total\_M} shows some instability again in Fn8 and Fn22. Based on the above experimental results, we can conclude that even under extreme optimization conditions, \textbf{obs\_M} is still the most reliable choice.
+
+\section{homogeneous noise with EI}
+\subsection{2-dimensional experiments}
+\hspace{2em}This set of experiments was performed in two dimensions with moderate noise levels, with the acquisition function for all output methods uniformly set to EI. It is worth mentioning that when the acquisition function is the same, \textbf{obs} and \textbf{obs\_M} actually select output points from exactly the same set of observed points for each experiment. It can be seen that after unifying the acquisition functions, we still get almost exactly the same conclusions as in 4.2: \textbf{obs} performs poorly on most of the functions, and \textbf{total\_M} still suffers from instability. This set of experimental results is mainly used to demonstrate that the gap between \textbf{obs}  and the other two methods is not mainly caused by the difference between EI and EIM.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Homo_noise_2D_onlyEI/Fn1_M2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Homo_noise_2D_onlyEI/Fn2_M2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Homo_noise_2D_onlyEI/Fn7_M2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Homo_noise_2D_onlyEI/Fn8_M2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Homo_noise_2D_onlyEI/Fn10_M2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Homo_noise_2D_onlyEI/Fn13_M2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Homo_noise_2D_onlyEI/Fn18_M2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Homo_noise_2D_onlyEI/Fn19_M2D_ins.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{.32\linewidth}
+        \centering
+        \includegraphics[width=1\textwidth]{D:/outputway/pictures/Homo_noise_2D_onlyEI/Fn22_M2D_ins.png}
+    \end{subfigure}
+    \caption{2D optimization results((Medium noise, with only EI)}
+    \label{Fig9}
+\end{figure}
+
+\hspace{2em}Here, we do not immediately proceed to compare the differences in optimization results obtained using different acquisition functions when the output method is the same. This is because the main goal of this paper is not to investigate which acquisition function to use when optimizing a problem with noise. In fact, there are many types of acquisition functions for handling noise, but fundamentally, there is no direct relationship between the choice of result output method in the optimization process and the specific acquisition function used.
+
+\section{Non-homogeneous noise experimental results}
+\subsection{2-dimensional experiments}
+The basic settings of the experiments are the same as those in 4.2, with the only difference being that the noise settings are no longer homogeneous variance, but are set as follows:
+\begin{equation}\label{eq12}
+	f_{GN}(f,\beta) = f \times exp(\beta\mathcal{N}(0,1)) 
+\end{equation}
+where $mathcal{N}(0,1)$ represents random sampling from the standard normal distribution, and $beta$ is the parameter that controls the magnitude of the noise, here we set it to 0.1. Note that the value of noise here will be related to the true value of the function. Also similar to 4.2, we give the following image of the experimental results:
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{1\linewidth}
+        \centering
+        \includegraphics[width=.96\textwidth]{D:/outputway/pictures/Non-homo_noise_2D/Non-homo2D_M.png}
+    \end{subfigure}
+    \caption{2D optimization results(Non-homogeneous noise)}
+    \label{Fig10}
+\end{figure}
+
+\hspace{2em}The results reflected in the figures are basically similar to those in 4.2, with the only difference being that for functions with large standard deviations (e.g. Fn2, Fn10), the observative output methods in non-homogeneous noise is much better than the predictive output method. This is because when the noise value is positively correlated with the true value of the function, the point with the smaller value of the function corresponds to the less noise, so if we observe that the value of a point is small, it is most likely because the function value corresponding to that point is also small, rather than due to extreme noise. In this case, the observant output method is more reliable than the predictive output methods, even if noise is affected(which is the main difference with the homogeneous variance conclusion).
+
+\end{document}
