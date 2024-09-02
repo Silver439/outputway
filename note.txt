@@ -1,7 +1,7 @@
 Data\olddata2D: 异质噪声，使用EIM
 Data\noise2D: 同质噪声，使用EIM
 Data\noise4D: 同质噪声，使用EIM
-Data\EInoise2D: 同质噪声，使用EI
+Data\EInoise2D: 同质噪声，只用EI
 Data\data2D: 无噪声2D
 Data\data4D: 无噪声4D
 oldcode\DataOld\noise2D: 异质噪声，只用EI
