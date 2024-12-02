@@ -1,15 +1,27 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{17}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Shahriari et~al.(2016)Shahriari, Swersky, Wang, Adams, and de~Freitas]{Shahriari2016taking}
-Bobak Shahriari, Kevin Swersky, Ziyu Wang, Ryan~P. Adams, and Nando de~Freitas.
-\newblock Taking the human out of the loop: A review of bayesian optimization.
-\newblock \emph{Proceedings of the IEEE}, 104\penalty0 (1):\penalty0 148--175, 2016.
-\newblock \doi{10.1109/JPROC.2015.2494218}.
+\bibitem[Zhang~Yichi(2020)]{Zhang2020}
+Chen~Wei Zhang~Yichi, Apley Daniel~W.
+\newblock Bayesian optimization for materials design with mixed quantitative and qualitative variables.
+\newblock \emph{Scientific Reports}, 10:\penalty0 4924, 2020.
+\newblock \doi{10.1038/s41598-020-60652-9}.
+\newblock URL \url{https://doi.org/10.1038/s41598-020-60652-9}.
+
+\bibitem[Martinez-Cantin(2017)]{Ruben2017}
+Ruben Martinez-Cantin.
+\newblock Bayesian optimization with adaptive kernels for robot control.
+\newblock In \emph{2017 IEEE International Conference on Robotics and Automation (ICRA)}, pages 3350--3356, 2017.
+\newblock \doi{10.1109/ICRA.2017.7989380}.
+
+\bibitem[Snoek et~al.(2012)Snoek, Larochelle, and Adams]{snoek2012}
+Jasper Snoek, Hugo Larochelle, and Ryan~P. Adams.
+\newblock Practical bayesian optimization of machine learning algorithms, 2012.
+\newblock URL \url{https://arxiv.org/abs/1206.2944}.
 
 \bibitem[Rasmussen and Williams(2005)]{Rasmussen2005Gaussian}
 Carl~Edward Rasmussen and Christopher K.~I. Williams.
@@ -18,6 +30,24 @@ Carl~Edward Rasmussen and Christopher K.~I. Williams.
 \newblock ISBN 9780262256834.
 \newblock \doi{10.7551/mitpress/3206.001.0001}.
 \newblock URL \url{https://doi.org/10.7551/mitpress/3206.001.0001}.
+
+\bibitem[Shahriari et~al.(2016)Shahriari, Swersky, Wang, Adams, and de~Freitas]{Shahriari2016taking}
+Bobak Shahriari, Kevin Swersky, Ziyu Wang, Ryan~P. Adams, and Nando de~Freitas.
+\newblock Taking the human out of the loop: A review of bayesian optimization.
+\newblock \emph{Proceedings of the IEEE}, 104\penalty0 (1):\penalty0 148--175, 2016.
+\newblock \doi{10.1109/JPROC.2015.2494218}.
+
+\bibitem[Frazier(2018)]{Frazier2018BO}
+Peter~I. Frazier.
+\newblock \emph{Bayesian Optimization}, chapter~11, pages 255--278.
+\newblock 2018.
+\newblock \doi{10.1287/educ.2018.0188}.
+\newblock URL \url{https://pubsonline.informs.org/doi/abs/10.1287/educ.2018.0188}.
+
+\bibitem[Garnett(2023)]{Garnett_2023}
+Roman Garnett.
+\newblock \emph{Bayesian Optimization}.
+\newblock Cambridge University Press, 2023.
 
 \bibitem[Jones et~al.(1998)Jones, Schonlau, and Welch]{Jones1998Efficient}
 Donald~R. Jones, Matthias Schonlau, and William~J. Welch.

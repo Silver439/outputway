@@ -12,15 +12,20 @@
 \global\let\hyper@last\relax 
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand*\HyPL@Entry[1]{}
-\citation{Shahriari2016taking}
+\citation{Zhang2020}
+\citation{Ruben2017}
+\citation{snoek2012}
 \citation{Rasmussen2005Gaussian}
+\citation{Shahriari2016taking}
+\citation{Frazier2018BO}
+\citation{Garnett_2023}
 \citation{Jones1998Efficient}
 \citation{Hansen2010RealParameterBO}
 \HyPL@Entry{0<</S/D>>}
 \providecommand \oddpage@label [2]{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Bayesian optimization}{2}{section.2}\protected@file@percent }
-\newlabel{eq1}{{1}{2}{Bayesian optimization}{equation.2.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Bayesian Optimization}{2}{section.2}\protected@file@percent }
+\newlabel{eq1}{{1}{2}{Bayesian Optimization}{equation.2.1}{}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Bayesian optimization\relax }}{2}{algocf.1}\protected@file@percent }
 \citation{Jones1998Efficient}
 \citation{Srinivas2009Gaussian}
@@ -47,48 +52,53 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Experimeental settings}{4}{subsection.3.2}\protected@file@percent }
 \newlabel{eq9}{{9}{5}{Experimeental settings}{equation.3.9}{}}
 \newlabel{eq10}{{10}{5}{Experimeental settings}{equation.3.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The above two figures illustrate the results of Bayesian optimization for a one-dimensional noisy function. The pale red curve represents the true function, while the blue curve depicts the predicted mean function of the Gaussian Process (GP). The green dots indicate the observation points selected by the acquisition function. The acquisition function used in the left figure is Expected Improvement (EI), which corresponds to the output method '\textbf  {obs}', where the point with the smallest observation value is directly outputted. The acquisition function for the right figure is Expected Improvement of the Mean (EIM), showing two outputs based on the predicted values. The method '\textbf  {total\_M}' corresponds to the minimum value of the predicted mean function (blue curve), and '\textbf  {obs\_M}' is the point with the smallest predicted mean (blue curve) among all observed points (green dots).\relax }}{5}{figure.caption.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The above two figures illustrate the results of bayesian optimization for a one-dimensional noisy function. The pale red curve represents the true function, while the blue curve depicts the predicted mean function of the Gaussian Process (GP). The green dots indicate the observation points selected by the acquisition function EI and EIM. The acquisition function used in the left figure is Expected Improvement (EI), which corresponds to the output method '\textbf  {obs}', where the point with the smallest observation value is directly outputted. The acquisition function for the right figure is Expected Improvement of the Mean (EIM), showing two outputs based on the predicted values. The method '\textbf  {total\_M}' corresponds to the minimum value of the predicted mean function (blue curve), and '\textbf  {obs\_M}' is the point with the smallest predicted mean (blue curve) among all observed points (green dots).\relax }}{5}{figure.caption.3}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{Fig1}{{1}{5}{The above two figures illustrate the results of Bayesian optimization for a one-dimensional noisy function. The pale red curve represents the true function, while the blue curve depicts the predicted mean function of the Gaussian Process (GP). The green dots indicate the observation points selected by the acquisition function. The acquisition function used in the left figure is Expected Improvement (EI), which corresponds to the output method '\textbf {obs}', where the point with the smallest observation value is directly outputted. The acquisition function for the right figure is Expected Improvement of the Mean (EIM), showing two outputs based on the predicted values. The method '\textbf {total\_M}' corresponds to the minimum value of the predicted mean function (blue curve), and '\textbf {obs\_M}' is the point with the smallest predicted mean (blue curve) among all observed points (green dots).\relax }{figure.caption.3}{}}
+\newlabel{Fig1}{{1}{5}{The above two figures illustrate the results of bayesian optimization for a one-dimensional noisy function. The pale red curve represents the true function, while the blue curve depicts the predicted mean function of the Gaussian Process (GP). The green dots indicate the observation points selected by the acquisition function EI and EIM. The acquisition function used in the left figure is Expected Improvement (EI), which corresponds to the output method '\textbf {obs}', where the point with the smallest observation value is directly outputted. The acquisition function for the right figure is Expected Improvement of the Mean (EIM), showing two outputs based on the predicted values. The method '\textbf {total\_M}' corresponds to the minimum value of the predicted mean function (blue curve), and '\textbf {obs\_M}' is the point with the smallest predicted mean (blue curve) among all observed points (green dots).\relax }{figure.caption.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Experimental results and analysis.}{6}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Noise-free experimental results}{6}{subsection.4.1}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Noise-free results\relax }}{6}{table.caption.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Experimental results for the 2D noise problem}{7}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Experimental results for the 2D noisy problem}{7}{subsection.4.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces 2D optimization results(small noise)\relax }}{7}{figure.caption.5}\protected@file@percent }
 \newlabel{Fig2}{{2}{7}{2D optimization results(small noise)\relax }{figure.caption.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces 2D optimization results(Medium noise)\relax }}{8}{figure.caption.6}\protected@file@percent }
 \newlabel{Fig3}{{3}{8}{2D optimization results(Medium noise)\relax }{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Experimental results for the 4D noise problem}{9}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Experimental results for the 4D noisy problem}{9}{subsection.4.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces 4D optimization results(small noise)\relax }}{9}{figure.caption.7}\protected@file@percent }
 \newlabel{Fig4}{{4}{9}{4D optimization results(small noise)\relax }{figure.caption.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Other complementary experiments}{10}{subsection.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{10}{section.5}\protected@file@percent }
 \bibstyle{unsrtnat}
 \bibdata{references}
-\bibcite{Shahriari2016taking}{{1}{2016}{{Shahriari et~al.}}{{Shahriari, Swersky, Wang, Adams, and de~Freitas}}}
-\bibcite{Rasmussen2005Gaussian}{{2}{2005}{{Rasmussen and Williams}}{{}}}
-\bibcite{Jones1998Efficient}{{3}{1998}{{Jones et~al.}}{{Jones, Schonlau, and Welch}}}
-\bibcite{Hansen2010RealParameterBO}{{4}{2010}{{Hansen et~al.}}{{Hansen, Auger, Finck, and Ros}}}
-\bibcite{Srinivas2009Gaussian}{{5}{2009}{{{Srinivas} et~al.}}{{{Srinivas}, {Krause}, {Kakade}, and {Seeger}}}}
-\bibcite{Thompson1933On}{{6}{1933}{{Thompson}}{{}}}
-\bibcite{Hennig2012Entropy}{{7}{2012}{{Hennig and Schuler}}{{}}}
-\bibcite{Huang2006Global}{{8}{2006}{{Huang et~al.}}{{Huang, Allen, Notz, and Zheng}}}
-\bibcite{Forrester2006Design}{{9}{2006}{{Forrester et~al.}}{{Forrester, Keane, and Bressloff}}}
-\bibcite{Picheny2012Quantile}{{10}{2012}{{Picheny et~al.}}{{Picheny, Ginsbourger, Richet, and Caplin}}}
-\bibcite{Picheny2013benchmark}{{11}{2013}{{Picheny et~al.}}{{Picheny, Wagner, and Ginsbourger}}}
-\bibcite{Bossek2020Initial}{{12}{2020}{{{Bossek} et~al.}}{{{Bossek}, {Doerr}, and {Kerschke}}}}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Other complementary experiments}{12}{appendix.A}\protected@file@percent }
+\bibcite{Zhang2020}{{1}{2020}{{Zhang~Yichi}}{{}}}
+\bibcite{Ruben2017}{{2}{2017}{{Martinez-Cantin}}{{}}}
+\bibcite{snoek2012}{{3}{2012}{{Snoek et~al.}}{{Snoek, Larochelle, and Adams}}}
+\bibcite{Rasmussen2005Gaussian}{{4}{2005}{{Rasmussen and Williams}}{{}}}
+\bibcite{Shahriari2016taking}{{5}{2016}{{Shahriari et~al.}}{{Shahriari, Swersky, Wang, Adams, and de~Freitas}}}
+\bibcite{Frazier2018BO}{{6}{2018}{{Frazier}}{{}}}
+\bibcite{Garnett_2023}{{7}{2023}{{Garnett}}{{}}}
+\bibcite{Jones1998Efficient}{{8}{1998}{{Jones et~al.}}{{Jones, Schonlau, and Welch}}}
+\bibcite{Hansen2010RealParameterBO}{{9}{2010}{{Hansen et~al.}}{{Hansen, Auger, Finck, and Ros}}}
+\bibcite{Srinivas2009Gaussian}{{10}{2009}{{{Srinivas} et~al.}}{{{Srinivas}, {Krause}, {Kakade}, and {Seeger}}}}
+\bibcite{Thompson1933On}{{11}{1933}{{Thompson}}{{}}}
+\bibcite{Hennig2012Entropy}{{12}{2012}{{Hennig and Schuler}}{{}}}
+\bibcite{Huang2006Global}{{13}{2006}{{Huang et~al.}}{{Huang, Allen, Notz, and Zheng}}}
+\bibcite{Forrester2006Design}{{14}{2006}{{Forrester et~al.}}{{Forrester, Keane, and Bressloff}}}
+\bibcite{Picheny2012Quantile}{{15}{2012}{{Picheny et~al.}}{{Picheny, Ginsbourger, Richet, and Caplin}}}
+\bibcite{Picheny2013benchmark}{{16}{2013}{{Picheny et~al.}}{{Picheny, Wagner, and Ginsbourger}}}
+\bibcite{Bossek2020Initial}{{17}{2020}{{{Bossek} et~al.}}{{{Bossek}, {Doerr}, and {Kerschke}}}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Experiment under extreme conditions}{12}{appendix.A}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.1}2-dimensional experiments}{12}{subsection.A.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces 2D optimization results(Large noise)\relax }}{12}{figure.caption.10}\protected@file@percent }
 \newlabel{Fig7}{{5}{12}{2D optimization results(Large noise)\relax }{figure.caption.10}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.2}4-dimensional experiments}{13}{subsection.A.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces 4D optimization results(Medium noise)\relax }}{13}{figure.caption.11}\protected@file@percent }
 \newlabel{Fig8}{{6}{13}{4D optimization results(Medium noise)\relax }{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {B}homogeneous noise with EI}{13}{appendix.B}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Experiment using EI only}{13}{appendix.B}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {B.1}2-dimensional experiments}{13}{subsection.B.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces 2D optimization results((Medium noise, with only EI)\relax }}{14}{figure.caption.12}\protected@file@percent }
 \newlabel{Fig9}{{7}{14}{2D optimization results((Medium noise, with only EI)\relax }{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {C}Non-homogeneous noise experimental results}{14}{appendix.C}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {C}Experiment with non-homogeneous noise}{14}{appendix.C}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {C.1}2-dimensional experiments}{14}{subsection.C.1}\protected@file@percent }
 \newlabel{eq12}{{11}{14}{2-dimensional experiments}{equation.C.11}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces 2D optimization results(Non-homogeneous noise)\relax }}{15}{figure.caption.13}\protected@file@percent }
